@@ -14,7 +14,8 @@ import Articles from "./pages/Articles";
 function App(props) {
   useEffect(() => {
     props.fetchCurrentUser();
-  }, [props.currentUser.active] )
+  }, [props.currentUser.active]);
+  
   return (
     <div >
       <Route path="/" exact render={(props) => {

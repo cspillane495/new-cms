@@ -7,10 +7,8 @@ const Dashboard = (props) => {
     console.log(props);
     return (
         <div>
-          
-           
-             <h3>Welcome to the everpresent existence. Enjoy the ride...</h3>
-        
+            <h3>Welcome to the everpresent existence. Enjoy the ride...</h3>
+            <h4>Suck my balls</h4>
         </div>
     )
 }
