@@ -1,5 +1,7 @@
 import React , {useState} from 'react';
+import { connect } from 'react-redux';
 import Navbar from '../../components/Navbar';
+import {logout} from "../../actions/user";
 
 
 const DashboardLayout = (props) => {
@@ -8,14 +10,19 @@ const DashboardLayout = (props) => {
     const layout = (
         <div>
             <Navbar
+                history={props.history}
                 brand="Tats" 
                 onClick={() => setCollapsed(!collapsed)}
                 collapsed={collapsed}
+                logout={props.logout}
             />
             {props.children}
         </div>
     )
     return layout
 }
+function mapStatetoProps(){
+    return {}
+}
 
-export default DashboardLayout;
+export default connect(mapStatetoProps, {logout})(DashboardLayout);

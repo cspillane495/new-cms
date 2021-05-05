@@ -6,6 +6,7 @@ const Button = (props) => {
             className="btn btn-primary"
             onClick={props.onClick}
             type={props.type}
+            
         >
             {setTitle(props)}
         

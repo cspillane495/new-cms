@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Button from '../Button';
 const Navbar = (props) => {
     const navCollapse = props.collapsed && 'collapse';
   return ( 
@@ -21,6 +22,9 @@ const Navbar = (props) => {
                <li className="nav-item">
                    <Link to="/articles" className="nav-link">Articles</Link>
                </li>
+           </ul>
+           <ul style={{listStyle: "none", float: 'right'}}>
+                <li><Button title="Logout" onClick={() => props.logout(props.history)}/></li>
            </ul>
            </div>
        </div>
