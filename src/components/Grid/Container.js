@@ -2,9 +2,10 @@ import React from 'react'
 import classnames from 'classnames';
 
 const Container = (props) => {
-    const classes= classnames(
+    const classes = classnames(
         { 'container': !props.fluid}, 
-        {'container-fluid': props.fluid}   
+        {'container-fluid': props.fluid},
+        props.className
     )
     return (
         <div className={classes}>

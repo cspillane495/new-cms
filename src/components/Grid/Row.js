@@ -5,10 +5,10 @@ const Row = (props) => {
     const classes = classnames(
         props.className,
         'row', 
-        // {`gy-${props.gy}`: props.className }   
+        {[`gy-${props.gy}`]: props.gy }   
     );
     return (
-        <div className="row">
+        <div className={classes}>
             {React.Children.map(props.children, child => {
                 return child 
             })}
