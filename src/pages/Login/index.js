@@ -8,8 +8,6 @@ import {userLogin} from '../../actions/user';
 import LoginForm from '../../components/LoginForm';
 
 const Login  = (props) => {
-   
-
     if(props.loading){
         return 'Loading...'
     }

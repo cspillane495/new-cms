@@ -17,10 +17,10 @@ const Navbar = (props) => {
                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
                </li>
                <li className="nav-item">
-                   <Link to="/form" className="nav-link">Form</Link>
+                   <Link to="/episodes" className="nav-link">Episodes</Link>
                </li>
                <li className="nav-item">
-                   <Link to="/articles" className="nav-link">Articles</Link>
+                   <Link to="/media" className="nav-link">Media</Link>
                </li>
            </ul>
            <ul style={{listStyle: "none", float: 'right'}}>

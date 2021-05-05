@@ -11,7 +11,7 @@ const DashboardLayout = (props) => {
         <div>
             <Navbar
                 history={props.history}
-                brand="Tats" 
+                brand="Wine Reels CMS" 
                 onClick={() => setCollapsed(!collapsed)}
                 collapsed={collapsed}
                 logout={props.logout}

@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {Route, Redirect} from 'react-router-dom';
+import {Route, Redirect, Link, Switch} from 'react-router-dom';
 import MainIndex from './layouts';
 import FormPage from "./pages/FormPage";
 import Dashboard from './pages/Dashboard';
@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import {fetchCurrentUser} from './actions/user';
 import LoginIndex from './layouts/LoginIndex'
 import './App.css';
-import Articles from "./pages/Articles";
+import Media from "./pages/Media";
 
 function App(props) {
   useEffect(() => {
@@ -17,15 +17,17 @@ function App(props) {
   }, [props.currentUser.active]);
   
   return (
-    <div >
+    <Switch >
       <Route path="/" exact render={(props) => {
         return <Redirect to="/dashboard"/>
       }}/>
       <MainIndex path="/dashboard"currentUser={props.currentUser} component={Dashboard}></MainIndex>
-      <MainIndex path="/form" currentUser={props.currentUser} component={FormPage}/>
-      <MainIndex path="/articles" currentUser={props.currentUser} component={Articles}/>
+      <MainIndex path="/media" currentUser={props.currentUser} component={Media}/>
       <LoginIndex path="/login" component={Login} currentUser={props.currentUser}/>
-    </div>
+        <div>
+          <Link to="/">Go Back</Link>
+        </div>
+    </Switch>
   );
 }
 
