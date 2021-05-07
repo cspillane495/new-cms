@@ -8,32 +8,29 @@ const Media = (props) => {
     console.log('MEDIA', props)
     const [media, setMedia] = useState({});
     useEffect(() => {
-        props.fetchMediaItems()
+        props.fetchMediaItems();
     }, []);
 
-    function renderMedia(media) {
+    function renderMediaItems(media) {
         return media.map((item,i) => {
+            console.log('[RENDER MEDIA ITEMS]', item)
             return(
                 <li key={i}>
-                    
+                    {item.name}
                 </li>
             )
         })
     }
 
-    function uploadMedia() {
-        const data = new FormData()
-        data.append('file', media)
-    
-        props.uploadMediaItem(data)
-    }
-
     return(
         <Container>
             <h3>Media</h3>
-            {/* <Upload /> */}
-            <input type="file" name="file" onChange={(e) => setMedia(e.target.files[0])} />
+            <Upload multiple/>
+            {/* <input type="file" name="file" onChange={(e) => setMedia(e.target.files[0])} />
             <button type="button" onClick={uploadMedia}>Upload</button>
+            <ul>
+                {renderMediaItems(props.mediaItems)}
+            </ul> */}
         </Container>
     )
 }
