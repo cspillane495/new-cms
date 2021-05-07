@@ -13,13 +13,13 @@ const Navbar = (props) => {
            </button>
            <div className={`${navCollapse} navbar-collapse`}>
            <ul className="navbar-nav">
-               <li className="nav-item">
+               <li className="nav-item" onClick={props.onClick}>
                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
                </li>
-               <li className="nav-item">
+               <li className="nav-item" onClick={props.onClick}>
                    <Link to="/episodes" className="nav-link">Episodes</Link>
                </li>
-               <li className="nav-item">
+               <li className="nav-item" onClick={props.onClick}>
                    <Link to="/media" className="nav-link">Media</Link>
                </li>
            </ul>

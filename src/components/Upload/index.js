@@ -1,6 +1,8 @@
 import {useState, useRef} from 'react';
 import { Trash } from 'react-bootstrap-icons';
+import { connect } from 'react-redux';
 import Modal from '../Modal';
+import { uploadMediaItem } from '../../actions/media';
 import './style.css';
 
 const Upload = (props) => {
@@ -25,11 +27,12 @@ const Upload = (props) => {
         setFiles({...files, ...newObj});
     }
 
-    function uploadMedia(file) {
-        const data = new FormData()
-        data.append('file', file)
-        
-        props.uploadMediaItem(data)
+    function uploadMedia(filesObj) {
+        Object.keys(filesObj).forEach((item, i) => {
+            const data = new FormData()
+            data.append('file', files[item])
+            props.uploadMediaItem(data)
+        });
     }
 
     function showModal(e) {
@@ -73,7 +76,8 @@ const Upload = (props) => {
     return (
         <div>
             <input multiple={props.multiple} type='file' id='file' onChange={setFile} ref={inputFile} style={{display: 'none'}}/>
-            <button type="button" onClick={openFiles}>Click to Upload</button>
+            <button type="button" onClick={openFiles}>Click to select files</button>
+            <button type="button" onClick={() => uploadMedia(files)}>Upload</button>
             <div>
                 <ul className="file-list">
                     {renderUploadedFiles(files)}
@@ -83,4 +87,4 @@ const Upload = (props) => {
     )
 }
 
-export default Upload;
+export default connect(null, {uploadMediaItem})(Upload);

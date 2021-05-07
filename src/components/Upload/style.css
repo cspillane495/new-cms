@@ -19,6 +19,10 @@
     margin-bottom: 20px;
 }
 
+.media-item-meta {
+    min-width: 250px;
+}
+
 .media-item-content {
     align-self: center;
     margin-right: 10px;
