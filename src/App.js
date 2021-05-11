@@ -11,10 +11,11 @@ import LoginIndex from './layouts/LoginIndex'
 import './App.css';
 import Media from "./pages/Media";
 import Episodes from "./pages/Episodes";
-
+import { getToken } from './utils/authority';
 function App(props) {
   useEffect(() => {
     props.fetchCurrentUser();
+    getToken();
   }, [props.currentUser.active]);
   
   return (

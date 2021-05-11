@@ -2,7 +2,7 @@ import Input from '../Input';
 
 const Radio = (props) => {
     return (
-        <div class="form-check">
+        <div className="form-check">
             <Input 
                 onChange={props.onChange}
                 type="checkbox" 
@@ -10,7 +10,7 @@ const Radio = (props) => {
                 id={props.id}
             />
             {!props.title && (
-                <label class="form-check-label" for="flexCheckDefault">
+                <label className="form-check-label">
                     {props.title}
                 </label>
             )}

@@ -1,8 +1,10 @@
 import Radio from '../Radio';
 import useForm from '../../hooks/formHook';
+import { render } from '@testing-library/react';
 
 const Table = (props) => {
     const {form, setForm} = useForm();
+    
     function renderHeaders(headersList) {
         if(!headersList) return null
         return headersList.map((item, i) => {
@@ -10,15 +12,27 @@ const Table = (props) => {
         })
     }
 
-    function renderTableRows(rowsList) {
+    function renderTableRows(rowsList, headerList) {
         if(!rowsList) return <tr>'No Data'</tr>
+        
         return rowsList.map((item, i) => {
             return (
                 <tr key={i}>
                     <th scope="row">{i+1}</th>
-                    {/* <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td> */}
+                    {
+                        headerList.map((headerItem, i) => {
+                            console.log({item, headerItem: headerItem.dataIndex})
+                            return (
+                                <td>
+                                    {
+                                        headerItem.render ? (
+                                            headerItem.render(item[headerItem.dataIndex])
+                                        ) : item[headerItem.dataIndex]
+                                    }
+                                </td>
+                            )
+                        })
+                    }
                 </tr>
             )
         })
@@ -44,7 +58,7 @@ const Table = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {renderTableRows(props.list)}
+                {renderTableRows(props.list, props.headers)}
             </tbody>
         </table>
     )
