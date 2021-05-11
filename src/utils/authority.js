@@ -1,7 +1,7 @@
 
 export function setToken(token){
     if(!token) {
-        console.log('Hit')
+        // console.log('Hit')
         return sessionStorage.clear()
     }
     const tok = token.split(".");

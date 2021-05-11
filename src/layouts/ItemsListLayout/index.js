@@ -1,22 +1,16 @@
-import { Container } from '../../components/Grid';
+import { Container, Row, Col } from '../../components/Grid';
+import Table from '../../components/Table';
 
 const ItemsListLayout = (props) => {
-    return(
+    return (
         <Container>
             <Row>
                  <h2>{props.title}</h2>
             </Row>
             <Row>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope='col'>
-                                #
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                <Col>
+                    <Table headers={props.headers} list={props.list} />
+                </Col>
             </Row>
         </Container>        
     )

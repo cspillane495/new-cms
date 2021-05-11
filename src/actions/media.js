@@ -13,7 +13,7 @@ export const fetchMediaItems = () => async dispatch => {
 
 export const uploadMediaItem = (values) => async dispatch => {
     // dispatch({ type: FETCH_LOADING, payload: true});
-    console.log(values)
+    // console.log(values)
     const res = await axios(`${ROOT_URL}/media/upload`, {
         method: 'post',
         data: values,
@@ -21,7 +21,7 @@ export const uploadMediaItem = (values) => async dispatch => {
             Authorization: `Token ${getToken()}`,
         }
     });
-    console.log(res)
+    // console.log(res)
     // dispatch({ type: FETCH_MEDIA_ITEMS, payload: res.data })
 } 
 

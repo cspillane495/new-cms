@@ -4,7 +4,7 @@ import { Container, Row } from '../../components/Grid';
 import Input from "../../components/Input";
 import Button from '../../components/Button';
 import {connect} from 'react-redux';
-import {userLogin} from '../../actions/user';
+import {userLogin} from '../../actions/account';
 import LoginForm from '../../components/LoginForm';
 
 const Login  = (props) => {

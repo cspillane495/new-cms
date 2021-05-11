@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import ReactPlayer from "react-player";
 
 const Dashboard = (props) => {
-    console.log(props);
+    // console.log(props);
     return (
         
         <Container >

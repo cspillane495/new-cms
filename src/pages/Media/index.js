@@ -5,7 +5,7 @@ import { Container } from '../../components/Grid';
 import Upload from '../../components/Upload';
 
 const Media = (props) => {
-    console.log('MEDIA', props)
+    // console.log('MEDIA', props)
     const [media, setMedia] = useState({});
     useEffect(() => {
         props.fetchMediaItems();
@@ -13,7 +13,7 @@ const Media = (props) => {
 
     function renderMediaItems(media) {
         return media.map((item,i) => {
-            console.log('[RENDER MEDIA ITEMS]', item)
+            // console.log('[RENDER MEDIA ITEMS]', item)
             return(
                 <li key={i}>
                     {item.name}
@@ -26,8 +26,8 @@ const Media = (props) => {
         <Container>
             <h3>Media</h3>
             <Upload multiple/>
-            {/* <input type="file" name="file" onChange={(e) => setMedia(e.target.files[0])} />
-            <button type="button" onClick={uploadMedia}>Upload</button>
+            {/* <input type="file" name="file" onChange={(e) => setMedia(e.target.files[0])} /> */}
+            {/* <button type="button" onClick={uploadMedia}>Upload</button>
             <ul>
                 {renderMediaItems(props.mediaItems)}
             </ul> */}

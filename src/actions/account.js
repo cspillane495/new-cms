@@ -11,7 +11,7 @@ export const fetchCurrentUser = () => async dispatch => {
             Authorization: `Token ${getToken()}`,
         }
     });
-    console.log(getToken())
+    // console.log(getToken())
     dispatch({ type: FETCH_CURRENT_USER, payload: res.data.user});
     dispatch({ type: FETCH_LOADING, payload: false });    
 }
@@ -21,7 +21,7 @@ export const userLogin = (values, history) => async dispatch => {
     const res = await axios.post(`${ROOT_URL}/users/login`, {
         user: values
     });
-    console.log(res.data)
+    // console.log(res.data)
     setToken(res.data.user.token)
     dispatch({ type: FETCH_CURRENT_USER, payload: res.data.user});
     history.push(res.data.redirect)
@@ -34,4 +34,5 @@ export const logout = (history) => async dispatch => {
     setToken("")
     history.push('/login')
 }
+
 

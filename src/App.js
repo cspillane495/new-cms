@@ -6,10 +6,11 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login'
 import useUser from './hooks/userHook';
 import { connect } from 'react-redux';
-import {fetchCurrentUser} from './actions/user';
+import {fetchCurrentUser} from './actions/account';
 import LoginIndex from './layouts/LoginIndex'
 import './App.css';
 import Media from "./pages/Media";
+import Episodes from "./pages/Episodes";
 
 function App(props) {
   useEffect(() => {
@@ -23,6 +24,7 @@ function App(props) {
       }}/>
       <MainIndex path="/dashboard"currentUser={props.currentUser} component={Dashboard}></MainIndex>
       <MainIndex path="/media" currentUser={props.currentUser} component={Media}/>
+      <MainIndex path="/episodes" currentUser={props.currentUser} component={Episodes}/>
       <LoginIndex path="/login" component={Login} currentUser={props.currentUser}/>
         <div>
           <Link to="/">Go Back</Link>

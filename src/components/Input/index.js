@@ -1,10 +1,17 @@
 import React from 'react';
+import classnames from 'classnames';
 
 const Input = (props) => {
-    return(
+    const isCheckbox = props.type === 'checkbox';
+    const classes = classnames(
+        {'form-control': !isCheckbox},
+        {'form-check-input': isCheckbox},
+    )
+    console.log(props)
+    return (
         <input
             type={props.type}
-            className="form-control"
+            className={classes}
             id={props.id} 
             placeholder={props.placeholder}
             value={props.value || ''} 

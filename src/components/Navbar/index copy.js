@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Button from '../Button';
+import { TextIndentLeft, TextIndentRight } from 'react-bootstrap-icons'
 const Navbar = (props) => {
     const navCollapse = props.collapsed && 'collapse';
     return ( 

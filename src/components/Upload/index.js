@@ -17,26 +17,28 @@ const Upload = (props) => {
     function setFile() {
         const selectedFiles = inputFile.current.files;
         if(!selectedFiles) return
-        console.log(selectedFiles)
+        // console.log(selectedFiles)
+        // console.log(Object.keys(selectedFiles))
+
         let newObj = {};
         Object.keys(selectedFiles).map((key, i) => {
-            console.log(selectedFiles[key].name)
-
+            // console.log(selectedFiles[key].name)
             newObj[selectedFiles[key].name] = selectedFiles[key]
         });
+        // console.log(newObj)
         setFiles({...files, ...newObj});
     }
 
     function uploadMedia(filesObj) {
-        Object.keys(filesObj).forEach((item, i) => {
-            const data = new FormData()
-            data.append('file', files[item])
+        Object.keys(filesObj).forEach((key, i) => {
+            const data = new FormData();
+            data.append('file', files[key])
             props.uploadMediaItem(data)
         });
     }
 
     function showModal(e) {
-        console.log('[SHOW MODAL]', e.target)
+        // console.log('[SHOW MODAL]', e.target)
         setModalContent({img: e.target.src})
         setModalState(!modalState)
     };
@@ -46,8 +48,9 @@ const Upload = (props) => {
         setFiles({...files})
     }
 
-    function renderUploadedFiles(files) {
-        let arr = Object.keys(files);
+    function renderUploadedFiles(fileMap) {
+        let arr = Object.keys(fileMap);
+
         return arr.map((itemKey, i) => {
             return (
                 <li key={i}>
@@ -58,8 +61,8 @@ const Upload = (props) => {
                         <div className="media-item-content">
                             {itemKey}
                             <div className="media-item-meta">
-                                <span>{files[itemKey].type}</span>
-                                <span>{files[itemKey].size}</span>
+                                <span>{fileMap[itemKey].type}</span>
+                                <span>{fileMap[itemKey].size}</span>
                             </div>
                         </div>
                         <Modal onClose={showModal} show={modalState}>

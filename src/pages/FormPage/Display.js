@@ -11,7 +11,8 @@ const Display = (props) =>{
                     {`${keyName}: ${formItems[keyName]}`}
                     <Link 
                         to="/Form" className="nav-link"
-                        >Form
+                    >
+                        Form
                     </Link>    
                 </li>
             )
