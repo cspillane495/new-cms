@@ -14,15 +14,14 @@ const Upload = (props) => {
         inputFile.current.click();
     }
 
-    function setFile() {
+    function setFile ()  {
         const selectedFiles = inputFile.current.files;
         if(!selectedFiles) return
-        // console.log(selectedFiles)
         // console.log(Object.keys(selectedFiles))
 
         let newObj = {};
         Object.keys(selectedFiles).map((key, i) => {
-            // console.log(selectedFiles[key].name)
+            // console.log(typeof key)
             newObj[selectedFiles[key].name] = selectedFiles[key]
         });
         // console.log(newObj)

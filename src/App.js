@@ -15,7 +15,6 @@ import { getToken } from './utils/authority';
 function App(props) {
   useEffect(() => {
     props.fetchCurrentUser();
-    getToken();
   }, [props.currentUser.active]);
   
   return (

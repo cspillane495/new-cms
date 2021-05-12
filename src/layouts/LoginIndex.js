@@ -12,7 +12,9 @@ const LoginIndex = ({component: Component, currentUser, ...rest}) => {
                     </LoginLayout>
                 )
             }   else{
-                return <Redirect to= "/dashboard"/>
+                return !routeProps.location.state ? <Redirect to="/dashboard" /> : (
+                    <Redirect to={routeProps.location.state.from} />
+                )
             }
         }}/>
     )

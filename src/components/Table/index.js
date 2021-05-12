@@ -4,7 +4,9 @@ import { render } from '@testing-library/react';
 
 const Table = (props) => {
     const {form, setForm} = useForm();
-    
+    console.log(props)
+
+
     function renderHeaders(headersList) {
         if(!headersList) return null
         return headersList.map((item, i) => {
@@ -21,7 +23,7 @@ const Table = (props) => {
                     <th scope="row">{i+1}</th>
                     {
                         headerList.map((headerItem, i) => {
-                            console.log({item, headerItem: headerItem.dataIndex})
+                            // console.log({item, headerItem: headerItem.dataIndex})
                             return (
                                 <td>
                                     {
@@ -39,8 +41,11 @@ const Table = (props) => {
     }
 
     function selectAllRadioChange(e) {
-        const obj = {id: e.target.id, value: e.target}
-        console.log(obj)
+        const selectAllOnChange = props.rowSelection.onChange;
+        // const obj = {id: e.target.id, value: e.target};
+        // console.log(obj)
+
+
     }
 
     return (
@@ -48,6 +53,7 @@ const Table = (props) => {
             <thead>
                 <tr>
                     <th scope='col'>
+                        {}
                         <Radio 
                             onChange={selectAllRadioChange}
                             value={false}

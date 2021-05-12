@@ -19,7 +19,8 @@ const headers = [
     },
     {
         title: 'Active',
-        dataIndex: 'active'
+        dataIndex: 'active',
+        render: (active) => <span>{active ? 'true':'false'}</span>
     },
 ]
 
