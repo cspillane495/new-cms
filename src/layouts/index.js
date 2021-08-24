@@ -5,19 +5,17 @@ import DashboardLayout from './DashboardLayout';
 const MainIndex = ({component: Component, currentUser, ...rest}) => {
     return (
         <Route {...rest} render={(routeProps) => {
-            
-            console.log('[ROUTE]',routeProps)
             if(!currentUser.active) {
                 return <Redirect to={{
                     pathname: "/login",
                     state: { from: routeProps.location }
                 }}/>
             }
-           return ( 
-            <DashboardLayout {...routeProps} {...rest}>
-                <Component {...routeProps} {...rest}/>
-            </DashboardLayout>
-           )
+            return ( 
+                <DashboardLayout {...routeProps} {...rest}>
+                    <Component {...routeProps} {...rest}/>
+                </DashboardLayout>
+            )
         }}/>
     )
 }
