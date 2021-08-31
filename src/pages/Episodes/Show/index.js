@@ -157,7 +157,7 @@ const EpisodesShow = (props) => {
                         <Col sm={6}>
                             <FormItem>
                                 <Select 
-                                    options={getMediaTitlesByType(props.mediaItems, 'videos')}
+                                    options={getMediaTitlesByType(props.mediaItems, 'episode/promo')}
                                     id="episode-videoLink"
                                     placeholder="Select a Video"
                                     value={form["episode-videoLink"]}
