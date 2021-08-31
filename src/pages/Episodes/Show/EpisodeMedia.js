@@ -4,27 +4,16 @@ import { FormItem } from '../../../components/Form';
 import Select from '../../../components/Select';
 
 const EpisodeMedia = (props) => {
-    console.log(props)
-    const getVideoTitles = (items) => {
-        let newItems = [];
-        if(!items) { 
-            return newItems
-        }
-        return items.map(item => {
-            return {
-                id: item._id,
-                title: item.name
-            }
-        })
-    }
+    // console.log(props)
+    
 
     const updateForm = (input) => {
         
     }
 
-    return <>
-        <h4>Video</h4>
+    return <div className="episodes-media-items">
         <div className="episode-media">
+            <h4>Video</h4>
             <Select 
                 options={getVideoTitles(props.items)}
                 id="episode-videoLink"
@@ -33,7 +22,17 @@ const EpisodeMedia = (props) => {
                 onChange={props.changeInput}
             />
         </div>
-    </>
+        <div className="episode-media">
+            <h4>Video</h4>
+            <Select 
+                options={getVideoTitles(props.items)}
+                id="episode-videoLink"
+                placeholder="Select a Video"
+                value={props.form["episode-videoLink"]}
+                onChange={props.changeInput}
+            />
+        </div>
+    </div>
 }
 
 export default EpisodeMedia;

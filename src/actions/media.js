@@ -7,17 +7,19 @@ export const fetchMediaItems = () => async dispatch => {
     const res = await request('/media')
 
     dispatch({ type: FETCH_MEDIA_ITEMS, payload: res.data.mediaItems })
+    dispatch({ type: FETCH_LOADING, payload: false});
 } 
 
-export const uploadMediaItem = (values) => async dispatch => {
-    // dispatch({ type: FETCH_LOADING, payload: true});
-    // console.log(values)
+export const uploadMediaItem = (values, history) => async dispatch => {
+    dispatch({ type: FETCH_LOADING, payload: true});
     const res = await request('/media', {
         method: 'post',
         data: values
     });
-    console.log(res)
-    // dispatch({ type: FETCH_MEDIA_ITEMS, payload: res.data })
+    
+    history.push('/media')
+    // dispatch({ type: FETCH_MEDIA_ITEMS, payload: res.data });
+    dispatch({ type: FETCH_LOADING, payload: false});
 } 
 
 

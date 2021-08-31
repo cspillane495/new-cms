@@ -8,7 +8,7 @@ import useForm from '../../../hooks/formHook';
 import { connect } from 'react-redux';
 import { createEpisode, fetchEpisode, updateEpisode } from '../../../actions/episodes';
 import { fetchMediaItems } from '../../../actions/media';
-import EpisodeMedia from './EpisodeMedia';
+import {getMediaTitlesByType} from './utils';
 import './style.css';
 
 const typeOptions = [
@@ -66,7 +66,7 @@ const EpisodesShow = (props) => {
     }
 
     const setInitVals = (initVals) => {
-        console.log(initVals)
+        // console.log(initVals)
         if(!initVals) {
             return
         }
@@ -82,7 +82,7 @@ const EpisodesShow = (props) => {
             "episode-releaseDate": initVals.releaseDate,
         };
 
-        console.log(values)
+        // console.log(values)
 
         setFormInitValues(values)
     }
@@ -124,43 +124,63 @@ const EpisodesShow = (props) => {
                                 />
                             </FormItem>
                         </Col>
-                        <FormItem>
-                            <Input 
-                                id="episode-tags"
-                                placeholder="Tags"
-                                value={form["episode-tags"]}
-                                onChange={changeInput}
-                            />
-                        </FormItem>
-                        <FormItem>
-                            <Input 
-                                id="episode-thumbnail"
-                                placeholder="Video Thumbnail"
-                                value={form["episode-thumbnail"]}
-                                onChange={changeInput}
-                            />
-                        </FormItem>
-                        <FormItem>
-                            <Input 
-                                id="episode-description"
-                                placeholder="Description"
-                                value={form["episode-description"]}
-                                onChange={changeInput}
-                            />
-                        </FormItem>
-                        <FormItem>
-                            <Input 
-                                id="episode-releaseDate"
-                                placeholder="Release Date"
-                                value={form["episode-releaseDate"]}
-                                onChange={changeInput}
-                            />
-                        </FormItem>
-                        <EpisodeMedia 
+                        <Col sm={12}>
+                            <FormItem>
+                                <Input 
+                                    id="episode-tags"
+                                    placeholder="Tags"
+                                    value={form["episode-tags"]}
+                                    onChange={changeInput}
+                                />
+                            </FormItem>
+                        </Col>
+                        <Col sm={12}>
+                            <FormItem>
+                                <Input 
+                                    id="episode-description"
+                                    placeholder="Description"
+                                    value={form["episode-description"]}
+                                    onChange={changeInput}
+                                />
+                            </FormItem>
+                        </Col>
+                        <Col sm={12}>
+                            <FormItem>
+                                <Input 
+                                    id="episode-releaseDate"
+                                    placeholder="Release Date"
+                                    value={form["episode-releaseDate"]}
+                                    onChange={changeInput}
+                                />
+                            </FormItem>
+                        </Col>
+                        <Col sm={6}>
+                            <FormItem>
+                                <Select 
+                                    options={getMediaTitlesByType(props.mediaItems, 'videos')}
+                                    id="episode-videoLink"
+                                    placeholder="Select a Video"
+                                    value={form["episode-videoLink"]}
+                                    onChange={changeInput}
+                                />
+                            </FormItem>
+                        </Col>
+                        <Col sm={6}>
+                            <FormItem>
+                                <Select 
+                                    options={getMediaTitlesByType(props.mediaItems, 'thumbnail')}
+                                    id="episode-thumbnail"
+                                    placeholder="Select a Thumbnail"
+                                    value={form["episode-thumbnail"]}
+                                    onChange={changeInput}
+                                />
+                            </FormItem>
+                        </Col>
+                        {/* <EpisodeMedia 
                             items={props.mediaItems}
                             form={form}
                             changeInput={changeInput}
-                        />
+                        /> */}
                         <Button 
                             form={form}
                             changeInput={changeInput}

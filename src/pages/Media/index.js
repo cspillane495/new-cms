@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from '../../components/Grid';
-import ItemsListLayout from '../../layouts/ItemsListLayout';
+import ItemsListLayout, {TableImg} from '../../layouts/ItemsListLayout';
 import { fetchMediaItems } from '../../actions/media';
 import { Link } from 'react-router-dom';
 import def from '../../defaultSettings';
@@ -9,14 +9,20 @@ import Button from '../../components/Button';
 
 const headers = [
     {title: 'Name', dataIndex: 'name'},
+    {title: 'Category', dataIndex: 'category'},
     {title: 'Type', dataIndex: 'type'},
     {title: 'Size', dataIndex: 'size'},
     {
         title: 'View', 
         dataIndex: 'path', 
-        render: ({path}) => {
+        render: ({path}, {type}) => {
             const link = def.ROOT_URL + path;
-            return <img src={link} />
+            return <TableImg src={link} type={type}/>
+            // (
+            //     <div className="table-items-picture">
+            //         <img src={link} />
+            //     </div>
+            // )
         }
     },
 ];
@@ -32,7 +38,7 @@ const Media = (props) => {
             <Row>
                 <Col>
                     <ItemsListLayout
-                        back="/media"
+                        back="/"
                         list={list} 
                         headers={headers} 
                         path="/media/upload" 

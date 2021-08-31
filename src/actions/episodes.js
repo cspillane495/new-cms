@@ -9,7 +9,7 @@ export const createEpisode = (values, history) => async dispatch => {
         method: 'post'
     });
 
-    console.log('[CREATE EPISODE ACTION]', res.data);
+    // console.log('[CREATE EPISODE ACTION]', res.data);
     dispatch({ type: FETCH_LOADING, payload: false });
 }
 

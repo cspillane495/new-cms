@@ -51,7 +51,7 @@ const Episodes = (props) => {
             <Row>
                 <Col>
                     <ItemsListLayout 
-                        back="/episodes"
+                        back="/"
                         list={list} 
                         headers={headers} 
                         path="/episodes/create"

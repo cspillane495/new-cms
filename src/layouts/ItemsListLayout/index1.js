@@ -4,7 +4,7 @@ import Table from '../../components/Table';
 const ItemsListLayout = (props) => {
     const rowSelection = {
         onChange: (e)=> {//selectedRowKeys, selectedRows) => {
-            console.log(e)
+            // console.log(e)
             // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
         },
         getCheckboxProps: (record) => ({

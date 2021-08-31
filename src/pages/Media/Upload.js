@@ -21,16 +21,12 @@ const UploadMedia = (props) => {
             )
         })
     }
+    console.log(props)
 
-    return(
+    return (
         <Container>
             <h3>Media</h3>
-            <Upload multiple/>
-            {/* <input type="file" name="file" onChange={(e) => setMedia(e.target.files[0])} /> */}
-            {/* <button type="button" onClick={uploadMedia}>Upload</button>
-            <ul>
-                {renderMediaItems(props.mediaItems)}
-            </ul> */}
+            <Upload history={props.history} loading={props.loading} multiple/>
         </Container>
     )
 }
