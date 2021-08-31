@@ -1,55 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Container, Col } from '../../components/Grid';
 import ItemsListLayout from '../../layouts/ItemsListLayout';
-
-const headers = [
-    {
-        title: 'Title',
-        dataIndex: 'title',
-        render: (text) => <a href="">{text}</a>
-    },
-    {
-        title: 'Date',
-        dataIndex: 'date',
-        render: (date) => <span style={{color: 'red'}}>{date}</span>
-    },
-    {
-        title: 'Tags',
-        dataIndex: 'tags'
-    },
-    {
-        title: 'Active',
-        dataIndex: 'active',
-        render: (active) => <span>{active ? 'true':'false'}</span>
-    },
-]
-
-const list = [
-    {
-        title: 'Hello World',
-        date: '1-2-2021',
-        tags: 'tag, taag, taaag',
-        active: true
-    },
-    {
-        title: 'Hello World 2',
-        date: '1-3-2021',
-        tags: 'fag, faag, faaag',
-        active: false
-    }
-]
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchEpisodes, updateEpisode } from '../../actions/episodes';
+import useForm from '../../hooks/formHook';
+import ToggleSwitch from '../../components/ToggleSwitch';
 
 const Episodes = (props) => {
+    const list = props.episodes;
+    const { form, clearForm, setForm } = useForm();
+
+    useEffect(() => {
+        props.fetchEpisodes();
+    }, []);
+
+    const onToggled = (id, active) => {
+        props.updateEpisode({ active: !active}, id);
+        setForm({ id: 'episode-toggled' + '-' + id, value: !active });
+    }
+
+    const headers = [
+        {
+            title: 'Title',
+            dataIndex: 'title',
+            render: ({title, id}) => <Link to={`/episodes/${id}/edit`}>{title}</Link>
+        },
+        {
+            title: 'Date',
+            dataIndex: 'date',
+        },
+        {
+            title: 'Tags',
+            dataIndex: 'tags'
+        },
+        {
+            title: 'Active',
+            dataIndex: 'active',
+            render: ({active, id}) => console.log(id)//(
+            //     <ToggleSwitch 
+            //         toggled={form['episode-toggled'] + '-' + id} 
+            //         onToggle={(cb) => cb(false)} 
+            //     />
+            // )
+        },
+    ];
+
     return (   
         <Container >
-            <h3>Title</h3>
             <Row>
                 <Col>
-                    <ItemsListLayout list={list} headers={headers} />
+                    <ItemsListLayout 
+                        back="/episodes"
+                        list={list} 
+                        headers={headers} 
+                        path="/episodes/create"
+                        title="Episodes"
+                    />
                 </Col>
             </Row>
         </Container>
     )
 }
+
+function mapStateToProps({ episodes }) {
+    return { episodes }
+}
     
-export default Episodes;
+export default connect(mapStateToProps, { fetchEpisodes, updateEpisode })(Episodes);

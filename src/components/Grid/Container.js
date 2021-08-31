@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 const Container = (props) => {
     const classes = classnames(
-        { 'container': !props.fluid}, 
+        {'container': !props.fluid}, 
         {'container-fluid': props.fluid},
         props.className
     )

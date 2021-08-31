@@ -1,42 +1,51 @@
-import {useEffect, useState} from 'react';
-import { connect } from "react-redux";
-import { fetchMediaItems, uploadMediaItem } from '../../actions/media';
-import { Container } from '../../components/Grid';
-import Upload from '../../components/Upload';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Container, Row, Col } from '../../components/Grid';
+import ItemsListLayout from '../../layouts/ItemsListLayout';
+import { fetchMediaItems } from '../../actions/media';
+import { Link } from 'react-router-dom';
+import def from '../../defaultSettings';
+import Button from '../../components/Button';
+
+const headers = [
+    {title: 'Name', dataIndex: 'name'},
+    {title: 'Type', dataIndex: 'type'},
+    {title: 'Size', dataIndex: 'size'},
+    {
+        title: 'View', 
+        dataIndex: 'path', 
+        render: ({path}) => {
+            const link = def.ROOT_URL + path;
+            return <img src={link} />
+        }
+    },
+];
 
 const Media = (props) => {
-    // console.log('MEDIA', props)
-    const [media, setMedia] = useState({});
+    const list = props.mediaItems
     useEffect(() => {
         props.fetchMediaItems();
     }, []);
 
-    function renderMediaItems(media) {
-        return media.map((item,i) => {
-            // console.log('[RENDER MEDIA ITEMS]', item)
-            return(
-                <li key={i}>
-                    {item.name}
-                </li>
-            )
-        })
-    }
-
-    return(
+    return (
         <Container>
-            <h3>Media</h3>
-            <Upload multiple/>
-            {/* <input type="file" name="file" onChange={(e) => setMedia(e.target.files[0])} /> */}
-            {/* <button type="button" onClick={uploadMedia}>Upload</button>
-            <ul>
-                {renderMediaItems(props.mediaItems)}
-            </ul> */}
+            <Row>
+                <Col>
+                    <ItemsListLayout
+                        back="/media"
+                        list={list} 
+                        headers={headers} 
+                        path="/media/upload" 
+                        title="Media"
+                    />
+                </Col>
+            </Row>
         </Container>
     )
 }
 
-function mapStateToProps({ mediaItems, loading}) {
-    return{ mediaItems, loading };
+function mapStateToProps({mediaItems}) {
+    return {mediaItems}
 }
 
-export default connect(mapStateToProps, {fetchMediaItems, uploadMediaItem})(Media);
+export default connect(mapStateToProps, { fetchMediaItems })(Media)

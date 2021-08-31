@@ -1,27 +1,22 @@
 import { FETCH_MEDIA_ITEMS, FETCH_LOADING } from './types';
-import {setToken, getToken} from '../utils/authority';
-import axios from 'axios';
-const ROOT_URL = 'http://localhost:8080/api/v1';
+import request from '../utils/request';
 
 export const fetchMediaItems = () => async dispatch => {
     dispatch({ type: FETCH_LOADING, payload: true});
 
-    const res = await axios.get(`${ROOT_URL}/media`)
+    const res = await request('/media')
 
-    dispatch({ type: FETCH_MEDIA_ITEMS, payload: res.data })
+    dispatch({ type: FETCH_MEDIA_ITEMS, payload: res.data.mediaItems })
 } 
 
 export const uploadMediaItem = (values) => async dispatch => {
     // dispatch({ type: FETCH_LOADING, payload: true});
     // console.log(values)
-    const res = await axios(`${ROOT_URL}/media/upload`, {
+    const res = await request('/media', {
         method: 'post',
-        data: values,
-        headers: {
-            Authorization: `Token ${getToken()}`,
-        }
+        data: values
     });
-    // console.log(res)
+    console.log(res)
     // dispatch({ type: FETCH_MEDIA_ITEMS, payload: res.data })
 } 
 

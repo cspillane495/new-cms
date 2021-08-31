@@ -21,6 +21,9 @@ const Navbar = (props) => {
                         <li className="nav-item" onClick={props.onClick}>
                             <Link to="/media" className="nav-link">Media</Link>
                         </li>
+                        <li className="nav-item" onClick={props.onClick}>
+                            <Link to="/users" className="nav-link">Users</Link>
+                        </li>
                     </ul>
                     <ul style={{listStyle: "none", float: 'right'}}>
                             <li><Button title="Logout" onClick={() => props.logout(props.history)}/></li>

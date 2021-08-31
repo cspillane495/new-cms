@@ -1,11 +1,8 @@
 import Radio from '../Radio';
 import useForm from '../../hooks/formHook';
-import { render } from '@testing-library/react';
 
 const Table = (props) => {
     const {form, setForm} = useForm();
-    console.log(props)
-
 
     function renderHeaders(headersList) {
         if(!headersList) return null
@@ -15,21 +12,30 @@ const Table = (props) => {
     }
 
     function renderTableRows(rowsList, headerList) {
-        if(!rowsList) return <tr>'No Data'</tr>
-        
-        return rowsList.map((item, i) => {
+        if(!rowsList) return <tr><td>'No Data'</td></tr>;
+        return rowsList.map((rowItem, i) => {
             return (
                 <tr key={i}>
-                    <th scope="row">{i+1}</th>
+                    <th>
+                        {
+                            props.checkbox ? (
+                                <Radio 
+                                    onChange={selectSingleTableItem}
+                                    value={form[`selectSingleTableItem-${i + 1}`]}
+                                    id={`selectSingleTableItem-${i + 1}`}
+                                />
+                            ) : i + 1
+                        }
+                    </th>
                     {
                         headerList.map((headerItem, i) => {
-                            // console.log({item, headerItem: headerItem.dataIndex})
+                            // console.log('[HEADER LIST MAP]',headerItem, rowItem);
                             return (
-                                <td>
+                                <td key={i}>
                                     {
                                         headerItem.render ? (
-                                            headerItem.render(item[headerItem.dataIndex])
-                                        ) : item[headerItem.dataIndex]
+                                            headerItem.render({ [headerItem.dataIndex]: rowItem[headerItem.dataIndex], id: rowItem._id}, rowItem)
+                                        ) : rowItem[headerItem.dataIndex]               
                                     }
                                 </td>
                             )
@@ -40,12 +46,16 @@ const Table = (props) => {
         })
     }
 
+    function selectSingleTableItem(e) {
+        // console.log(e)
+        const obj = {id: e.target.id, value: e.target};
+        setForm(obj)
+    }
+
     function selectAllRadioChange(e) {
-        const selectAllOnChange = props.rowSelection.onChange;
-        // const obj = {id: e.target.id, value: e.target};
-        // console.log(obj)
-
-
+        // const selectAllOnChange = props.rowSelection.onChange;
+        const obj = {id: e.target.id, value: e.target};
+        setForm(obj)
     }
 
     return (
@@ -56,7 +66,7 @@ const Table = (props) => {
                         {}
                         <Radio 
                             onChange={selectAllRadioChange}
-                            value={false}
+                            value={form.selectAllTableItems}
                             id="selectAllTableItems"
                         />
                     </th>

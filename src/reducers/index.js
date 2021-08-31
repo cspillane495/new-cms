@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import {loading} from './utils';
 import {users, currentUser} from './users';
 import {mediaItems, mediaItem} from './media';
+import { episode, episodes } from './episodes';
 
 export default combineReducers({
     loading,
@@ -9,4 +10,6 @@ export default combineReducers({
     currentUser,
     mediaItems,
     mediaItem,
+    episode, 
+    episodes
 })

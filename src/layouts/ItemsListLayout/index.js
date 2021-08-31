@@ -1,32 +1,27 @@
 import { Container, Row, Col } from '../../components/Grid';
 import Table from '../../components/Table';
+import { Link } from 'react-router-dom';
+import Button from '../../components/Button';
+import { ChevronLeft } from 'react-bootstrap-icons';
 
 const ItemsListLayout = (props) => {
-    const rowSelection = {
-        onChange: (e)=> {//selectedRowKeys, selectedRows) => {
-            console.log(e)
-            // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-        },
-        getCheckboxProps: (record) => ({
-            disabled: record.name === 'Disabled User',
-            // Column configuration not to be checked
-            name: record.name,
-        }),
-    };
     return (
         <Container>
             <Row>
-                 <h2>{props.title}</h2>
+                <Link to={props.back}><ChevronLeft /></Link>
+                <h2>{props.title}</h2>
             </Row>
+            <Link to={props.path}>
+                <Button>
+                    Add New
+                </Button>
+            </Link>
             <Row>
                 <Col>
                     <Table 
                         headers={props.headers} 
                         list={props.list} 
-                        rowSelection={{
-                            type: 'checkbox',
-                            ...rowSelection,
-                        }}
+                        checkbox
                     />
                 </Col>
             </Row>

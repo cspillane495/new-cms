@@ -1,17 +1,18 @@
 import React, {useEffect} from "react";
 import {Route, Redirect, Link, Switch} from 'react-router-dom';
 import MainIndex from './layouts';
-import FormPage from "./pages/FormPage";
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login'
-import useUser from './hooks/userHook';
 import { connect } from 'react-redux';
 import {fetchCurrentUser} from './actions/account';
 import LoginIndex from './layouts/LoginIndex'
-import './App.css';
 import Media from "./pages/Media";
 import Episodes from "./pages/Episodes";
-import { getToken } from './utils/authority';
+import EpisodesShow from "./pages/Episodes/Show";
+import Users from './pages/Users';
+import './App.css';
+import Upload from "./pages/Media/Upload";
+
 function App(props) {
   useEffect(() => {
     props.fetchCurrentUser();
@@ -23,8 +24,12 @@ function App(props) {
         return <Redirect to="/dashboard"/>
       }}/>
       <MainIndex path="/dashboard"currentUser={props.currentUser} component={Dashboard}></MainIndex>
-      <MainIndex path="/media" currentUser={props.currentUser} component={Media}/>
-      <MainIndex path="/episodes" currentUser={props.currentUser} component={Episodes}/>
+      <MainIndex path="/media" exact currentUser={props.currentUser} component={Media}/>
+      <MainIndex path="/media/upload" currentUser={props.currentUser} component={Upload}/>
+      <MainIndex path="/episodes" exact currentUser={props.currentUser} component={Episodes}/>
+      <MainIndex path="/episodes/create" exact currentUser={props.currentUser} component={EpisodesShow}/>
+      <MainIndex path="/episodes/:id/edit" currentUser={props.currentUser} component={EpisodesShow}/>
+      <MainIndex path="/users" exact currentUser={props.currentUser} component={Users} />
       <LoginIndex path="/login" component={Login} currentUser={props.currentUser}/>
         <div>
           <Link to="/">Go Back</Link>

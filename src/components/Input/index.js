@@ -7,7 +7,7 @@ const Input = (props) => {
         {'form-control': !isCheckbox},
         {'form-check-input': isCheckbox},
     )
-    console.log(props)
+
     return (
         <input
             type={props.type}

@@ -7,7 +7,7 @@ import Display from "./Display"
 import useForm from '../../hooks/formHook';
 
 const FormPage = (props) =>{
-    const {form,setForm, clearForm} = useForm();
+    const {form, setForm, clearForm} = useForm();
     const [formTitle, setFormTitle] = useState("Form Title");
     const changeInput = (e) => {
         const obj = {id: e.target.id , value: e.target.value}

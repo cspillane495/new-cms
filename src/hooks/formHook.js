@@ -13,10 +13,15 @@ const useForm = () => {
         setFormState({})
     }
 
+    function setFormInitValues(initValues) {
+        setFormState({...form, ...initValues})
+    }
+
     return {
         form,
         setForm,
-        clearForm
+        clearForm,
+        setFormInitValues
     }
 }
 

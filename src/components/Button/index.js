@@ -1,5 +1,6 @@
 import React from 'react';
 import "./style.css";
+
 const Button = (props) => { 
     return (
         <button 
@@ -9,18 +10,14 @@ const Button = (props) => {
             
         >
             {setTitle(props)}
-        
         </button>
     )
 } 
-
 
 function setTitle({title, children}) {
     if(!title){
         return children
     }
-
-
     return title
 }
 

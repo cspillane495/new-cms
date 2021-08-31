@@ -15,7 +15,7 @@ const LoginForm = (props) => {
 
     const submitLogin = () => {
         // console.log("[Submit Lgin Form]",form)
-        const user = {email: form.loginUserName, password : form.loginPassword};
+        const user = {email: form.loginEmail, password : form.loginPassword};
 
         props.userLogin(user, props.history) 
     }
@@ -23,9 +23,9 @@ const LoginForm = (props) => {
         <Form onSubmit={submitLogin}>
             <FormItem>
                 <Input  
-                    id="loginUserName"
-                    placeholder="UserName"
-                    value={form.loginUserName}
+                    id="loginEmail"
+                    placeholder="Email"
+                    value={form.loginEmail}
                     onChange={changeInput}
                 />
              </FormItem>
