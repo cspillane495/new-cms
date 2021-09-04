@@ -7,7 +7,7 @@ import { fetchMediaItems, updateMediaItem } from '../../actions/media';
 import { Link } from 'react-router-dom';
 import def from '../../defaultSettings';
 import Button from '../../components/Button';
-import { categoryOptions } from '../../resources/tableDefinitions';
+import { mediaCategories } from '../../resources/tableDefinitions';
 
 const Media = (props) => {
     const [selectCat, setSelectCat] = useState('')
@@ -23,24 +23,17 @@ const Media = (props) => {
         {
             title: 'Name', 
             dataIndex: 'name', 
-            editable: true,
-            onSave: saveMediaItem
+            edit: {
+                onSave: saveMediaItem
+            },
         },
         {
             title: 'Category', 
             dataIndex: 'category', 
-            editable: true,
-            onSave: saveMediaItem,
-            editRender: ({category}) => {
-                return (
-                    <Select 
-                        options={categoryOptions}
-                        id="media-category"
-                        placeholder={category}
-                        value={selectCat}
-                        onChange={changeSelect}
-                    />
-                )
+            edit: {
+                onSave: saveMediaItem,
+                select: true,
+                selectOptions: mediaCategories
             }
         },
         {title: 'Type', dataIndex: 'type'},

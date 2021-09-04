@@ -5,7 +5,7 @@ const EditableItem = props => {
     const inputRef = useRef(null);
     const [inputVisible, setInputVisible] = useState(false);
     const [text, setText] = useState(props.children);
-  
+    console.log('PROPS', props)
     function onClickOutSide(e) {
       const target = e.target
       // Check if user is clicking outside of <input>
@@ -13,7 +13,7 @@ const EditableItem = props => {
         if(props.children === text || text < 1) {
           setText(props.children)
         } else {
-          props.onSave({[props.dataIndex]: text}, props._id)
+          props.edit.onSave({[props.dataIndex]: text}, props.rowItem._id)
         }
         setInputVisible(false); // Disable text input
       }
@@ -30,11 +30,24 @@ const EditableItem = props => {
         document.removeEventListener("mousedown", onClickOutSide);
       };
     });
+
+    const renderOptions = (options, selectedOp) => {
+      return options.map((option, i) => {
+        return <option key={i} value={option.id}>{option.title}</option>
+      });
+    }
   
     return (
       <React.Fragment>
-        {inputVisible ? props.render ? (
-          props.render({ [props.dataIndex]: props.rowItem[props.dataIndex], id: props.rowItem._id}, props.rowItem)
+        {inputVisible ? props.edit.select ? (
+          <select 
+            ref={inputRef}
+            onChange={(e) => setText(e.target.value)}
+            value={text}
+          >
+            <option value="" disabled hidden>{props.placeholder}</option>
+            {renderOptions(props.edit.selectOptions)}
+          </select>
         ) : (
           <input
             ref={inputRef} // Set the Ref

@@ -28,12 +28,11 @@ const TableRows = ({list, headers, ...props}) => {
                         return (
                             <td key={i}>
                                 {
-                                    headerItem.editable ? (
+                                    headerItem.edit ? (
                                         <EditableItem
-                                            render={headerItem.editRender}
-                                            onSave={headerItem.onSave}
+                                            edit={headerItem.edit}
                                             dataIndex={headerItem.dataIndex}
-                                            {...rowItem}
+                                            rowItem={rowItem}
                                         >
                                             {renderData}
                                         </EditableItem>
