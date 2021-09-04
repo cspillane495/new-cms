@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Input from "../Input";
 
 const EditableItem = props => {
     const inputRef = useRef(null);
@@ -6,8 +7,14 @@ const EditableItem = props => {
     const [text, setText] = useState(props.children);
   
     function onClickOutSide(e) {
+      const target = e.target
       // Check if user is clicking outside of <input>
-      if (inputRef.current && !inputRef.current.contains(e.target)) {
+      if (inputRef.current && !inputRef.current.contains(target)) {
+        if(props.children === text || text < 1) {
+          setText(props.children)
+        } else {
+          props.onSave({[props.dataIndex]: text}, props._id)
+        }
         setInputVisible(false); // Disable text input
       }
     }
@@ -26,7 +33,9 @@ const EditableItem = props => {
   
     return (
       <React.Fragment>
-        {inputVisible ? (
+        {inputVisible ? props.render ? (
+          props.render({ [props.dataIndex]: props.rowItem[props.dataIndex], id: props.rowItem._id}, props.rowItem)
+        ) : (
           <input
             ref={inputRef} // Set the Ref
             value={text} // Now input value uses local state

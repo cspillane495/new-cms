@@ -1,34 +1,65 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from '../../components/Grid';
+import Select from '../../components/Select';
 import ItemsListLayout, {TableImg} from '../../layouts/ItemsListLayout';
-import { fetchMediaItems } from '../../actions/media';
+import { fetchMediaItems, updateMediaItem } from '../../actions/media';
 import { Link } from 'react-router-dom';
 import def from '../../defaultSettings';
 import Button from '../../components/Button';
-
-const headers = [
-    {title: 'Name', dataIndex: 'name', editable: true},
-    {title: 'Category', dataIndex: 'category'},
-    {title: 'Type', dataIndex: 'type'},
-    {title: 'Size', dataIndex: 'size'},
-    {
-        title: 'View', 
-        dataIndex: 'path', 
-        render: ({path}, {type}) => {
-            const link = def.ROOT_URL + path;
-            return <TableImg src={link} type={type}/>
-            // (
-            //     <div className="table-items-picture">
-            //         <img src={link} />
-            //     </div>
-            // )
-        }
-    },
-];
+import { categoryOptions } from '../../resources/tableDefinitions';
 
 const Media = (props) => {
-    const list = props.mediaItems
+    const [selectCat, setSelectCat] = useState('')
+    const list = props.mediaItems;
+    const saveMediaItem = (values, id) => {
+        props.updateMediaItem(values, id)
+    }
+    const changeSelect = (e) => {
+
+    };
+    
+    const headers = [
+        {
+            title: 'Name', 
+            dataIndex: 'name', 
+            editable: true,
+            onSave: saveMediaItem
+        },
+        {
+            title: 'Category', 
+            dataIndex: 'category', 
+            editable: true,
+            onSave: saveMediaItem,
+            editRender: ({category}) => {
+                return (
+                    <Select 
+                        options={categoryOptions}
+                        id="media-category"
+                        placeholder={category}
+                        value={selectCat}
+                        onChange={changeSelect}
+                    />
+                )
+            }
+        },
+        {title: 'Type', dataIndex: 'type'},
+        {title: 'Size', dataIndex: 'size'},
+        {
+            title: 'View', 
+            dataIndex: 'path', 
+            render: ({path}, {type}) => {
+                const link = def.ROOT_URL + path;
+                return <TableImg src={link} type={type}/>
+                // (
+                //     <div className="table-items-picture">
+                //         <img src={link} />
+                //     </div>
+                // )
+            }
+        },
+    ];
+    
     useEffect(() => {
         props.fetchMediaItems();
     }, []);
@@ -55,4 +86,4 @@ function mapStateToProps({mediaItems}) {
     return {mediaItems}
 }
 
-export default connect(mapStateToProps, { fetchMediaItems })(Media)
+export default connect(mapStateToProps, { fetchMediaItems, updateMediaItem })(Media)

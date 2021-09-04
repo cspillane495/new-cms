@@ -10,18 +10,7 @@ import { createEpisode, fetchEpisode, updateEpisode } from '../../../actions/epi
 import { fetchMediaItems } from '../../../actions/media';
 import {getMediaTitlesByType} from './utils';
 import './style.css';
-
-const typeOptions = [
-    {id: 'promo', title: "Promo"},
-    {id: 'episode', title: "Episode"},
-]
-
-const categoryOptions = [
-    {id: 'interview', title: 'Interview'},
-    {id: 'skit', title: 'Skit'},
-    {id: 'liveSet', title: 'Live Set'},
-    {id: 'musicVideo', title: 'Music Video'},
-]
+import { categoryOptions, typeOptions } from '../../../resources/tableDefinitions';
 
 const EpisodesShow = (props) => {
     let id;

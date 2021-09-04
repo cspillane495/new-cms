@@ -2,6 +2,7 @@ import Radio from '../Radio';
 import { useState } from 'react';
 import useForm from '../../hooks/formHook';
 import EditableItem from './EditableItem';
+import TableRows from './TableRows';
 import './index.css';
 
 const Table = (props) => {
@@ -16,42 +17,42 @@ const Table = (props) => {
     }
 console.log(props)
 
-    function renderTableRows(rowsList, headerList) {
-        if(rowsList.length === 0) return <tr><td>'No Data'</td></tr>;
-        return rowsList.map((rowItem, i) => {
-            return (
-                <tr key={i}>
-                    <th>
-                        {
-                            props.checkbox ? (
-                                <Radio 
-                                    onChange={selectSingleTableItem}
-                                    value={form[`${tableName}-tableItem-${i + 1}`]}
-                                    id={`${tableName}-tableItem-${i + 1}`}
-                                />
-                            ) : i + 1
-                        }
-                    </th>
-                    {
-                        headerList.map((headerItem, i) => {
-                            // console.log('[HEADER LIST MAP]',headerItem, rowItem);
-                            return (
-                                <td key={i}>
-                                    <EditableItem>
-                                        { 
-                                            headerItem.render ? (
-                                                headerItem.render({ [headerItem.dataIndex]: rowItem[headerItem.dataIndex], id: rowItem._id}, rowItem)
-                                            ) : rowItem[headerItem.dataIndex]               
-                                        }
-                                    </EditableItem>
-                                </td>
-                            )
-                        })
-                    }
-                </tr>
-            )
-        })  
-    }
+    // function renderTableRows(rowsList, headerList) {
+    //     if(rowsList.length === 0) return <tr><td>'No Data'</td></tr>;
+    //     return rowsList.map((rowItem, i) => {
+    //         return (
+    //             <tr key={i}>
+    //                 <th>
+    //                     {
+    //                         props.checkbox ? (
+    //                             <Radio 
+    //                                 onChange={selectSingleTableItem}
+    //                                 value={form[`${tableName}-tableItem-${i + 1}`]}
+    //                                 id={`${tableName}-tableItem-${i + 1}`}
+    //                             />
+    //                         ) : i + 1
+    //                     }
+    //                 </th>
+    //                 {
+    //                     headerList.map((headerItem, i) => {
+    //                         // console.log('[HEADER LIST MAP]',headerItem, rowItem);
+    //                         return (
+    //                             <td key={i}>
+    //                                 <EditableItem>
+    //                                     { 
+    //                                         headerItem.render ? (
+    //                                             headerItem.render({ [headerItem.dataIndex]: rowItem[headerItem.dataIndex], id: rowItem._id}, rowItem)
+    //                                         ) : rowItem[headerItem.dataIndex]               
+    //                                     }
+    //                                 </EditableItem>
+    //                             </td>
+    //                         )
+    //                     })
+    //                 }
+    //             </tr>
+    //         )
+    //     })  
+    // }
 
     function selectSingleTableItem(e) {
         // console.log(e)
@@ -81,7 +82,8 @@ console.log(props)
                 </tr>
             </thead>
             <tbody>
-                {renderTableRows(props.list, props.headers, selectAll)}
+                <TableRows {...props} />
+                {/* {renderTableRows(props.list, props.headers, selectAll)} */}
             </tbody>
         </table>
     )

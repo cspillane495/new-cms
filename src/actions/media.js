@@ -22,4 +22,16 @@ export const uploadMediaItem = (values, history) => async dispatch => {
     dispatch({ type: FETCH_LOADING, payload: false});
 } 
 
+export const updateMediaItem = (values, id) => async dispatch => {
+    dispatch({ type: FETCH_LOADING, payload: true});
+
+    await request('/media/' + id, {
+        method: 'put',
+        data: values
+    });
+
+    // dispatch({ type: FETCH_MEDIA_ITEMS, payload: res.data.mediaItems })
+    dispatch({ type: FETCH_LOADING, payload: false});
+} 
+
 
