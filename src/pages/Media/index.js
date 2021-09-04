@@ -38,6 +38,7 @@ const Media = (props) => {
             <Row>
                 <Col>
                     <ItemsListLayout
+                        editable
                         back="/"
                         list={list} 
                         headers={headers} 

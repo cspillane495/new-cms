@@ -23,6 +23,7 @@ const ItemsListLayout = (props) => {
                         headers={props.headers} 
                         list={props.list} 
                         checkbox
+                        {...props}
                     />
                 </Col>
             </Row>

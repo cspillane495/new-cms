@@ -1,6 +1,7 @@
 import Radio from '../Radio';
 import { useState } from 'react';
 import useForm from '../../hooks/formHook';
+import EditableItem from './EditableItem';
 import './index.css';
 
 const Table = (props) => {
@@ -13,6 +14,7 @@ const Table = (props) => {
             return <th key={i}>{item.title}</th>
         })
     }
+console.log(props)
 
     function renderTableRows(rowsList, headerList) {
         if(rowsList.length === 0) return <tr><td>'No Data'</td></tr>;
@@ -35,11 +37,13 @@ const Table = (props) => {
                             // console.log('[HEADER LIST MAP]',headerItem, rowItem);
                             return (
                                 <td key={i}>
-                                    {
-                                        headerItem.render ? (
-                                            headerItem.render({ [headerItem.dataIndex]: rowItem[headerItem.dataIndex], id: rowItem._id}, rowItem)
-                                        ) : rowItem[headerItem.dataIndex]               
-                                    }
+                                    <EditableItem>
+                                        { 
+                                            headerItem.render ? (
+                                                headerItem.render({ [headerItem.dataIndex]: rowItem[headerItem.dataIndex], id: rowItem._id}, rowItem)
+                                            ) : rowItem[headerItem.dataIndex]               
+                                        }
+                                    </EditableItem>
                                 </td>
                             )
                         })
