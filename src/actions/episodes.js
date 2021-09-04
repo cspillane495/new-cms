@@ -26,7 +26,7 @@ export const fetchEpisode = (id) => async dispatch => {
     dispatch({ type: FETCH_LOADING, payload: true });
 
     const res = await request('/episodes/' + id);
-
+    console.log('[EPISODE FETCH]',res);
     dispatch({ type: FETCH_EPISODE, payload: res.data.episode });
     dispatch({ type: FETCH_LOADING, payload: false });
 }

@@ -33,8 +33,9 @@ const EpisodesShow = (props) => {
             return
         }
         props.fetchEpisode(id);
-        setInitVals(props.episode)
-    }, [props.episode.id]);
+        console.log('[PROPS]', props)
+        setInitVals(props.episode);
+    }, [props.episode._id]);
 
     useEffect(() => {
         props.fetchMediaItems()
@@ -65,8 +66,8 @@ const EpisodesShow = (props) => {
         return props.updateEpisode(formItems, id)
     }
 
-    const setInitVals = (initVals) => {
-        // console.log(initVals)
+    const setInitVals = (data) => {
+        let initVals = data
         if(!initVals) {
             return
         }
@@ -87,6 +88,9 @@ const EpisodesShow = (props) => {
         setFormInitValues(values)
     }
 
+    if(props.loading) {
+        return 'Loading...'
+    }
     return (   
         <Container>
             <h3>Episodes Show</h3>

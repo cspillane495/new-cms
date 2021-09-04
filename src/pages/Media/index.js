@@ -8,7 +8,7 @@ import def from '../../defaultSettings';
 import Button from '../../components/Button';
 
 const headers = [
-    {title: 'Name', dataIndex: 'name'},
+    {title: 'Name', dataIndex: 'name', editable: true},
     {title: 'Category', dataIndex: 'category'},
     {title: 'Type', dataIndex: 'type'},
     {title: 'Size', dataIndex: 'size'},

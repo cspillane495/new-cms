@@ -6,7 +6,11 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+<<<<<<< Updated upstream
     "axios": "^0.21.2",
+=======
+    "axios": "^0.21.3",
+>>>>>>> Stashed changes
     "bootstrap": "^5.0.0-beta3",
     "classnames": "^2.3.1",
     "date-fns": "^2.21.3",
