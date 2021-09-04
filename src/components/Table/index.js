@@ -1,9 +1,12 @@
 import Radio from '../Radio';
+import { useState } from 'react';
 import useForm from '../../hooks/formHook';
+import './index.css';
 
 const Table = (props) => {
+    const tableName = props.id || props.name;
     const {form, setForm} = useForm();
-
+    const [selectAll, setSelectAll] = useState(false);
     function renderHeaders(headersList) {
         if(!headersList) return null
         return headersList.map((item, i) => {
@@ -12,7 +15,7 @@ const Table = (props) => {
     }
 
     function renderTableRows(rowsList, headerList) {
-        if(!rowsList) return <tr><td>'No Data'</td></tr>;
+        if(rowsList.length === 0) return <tr><td>'No Data'</td></tr>;
         return rowsList.map((rowItem, i) => {
             return (
                 <tr key={i}>
@@ -21,8 +24,8 @@ const Table = (props) => {
                             props.checkbox ? (
                                 <Radio 
                                     onChange={selectSingleTableItem}
-                                    value={form[`selectSingleTableItem-${i + 1}`]}
-                                    id={`selectSingleTableItem-${i + 1}`}
+                                    value={form[`${tableName}-tableItem-${i + 1}`]}
+                                    id={`${tableName}-tableItem-${i + 1}`}
                                 />
                             ) : i + 1
                         }
@@ -43,7 +46,7 @@ const Table = (props) => {
                     }
                 </tr>
             )
-        })
+        })  
     }
 
     function selectSingleTableItem(e) {
@@ -55,15 +58,15 @@ const Table = (props) => {
     function selectAllRadioChange(e) {
         // const selectAllOnChange = props.rowSelection.onChange;
         const obj = {id: e.target.id, value: e.target};
+        
         setForm(obj)
     }
 
     return (
         <table className="table">
-            <thead>
+            <thead className="table-header">
                 <tr>
                     <th scope='col'>
-                        {}
                         <Radio 
                             onChange={selectAllRadioChange}
                             value={form.selectAllTableItems}
@@ -74,7 +77,7 @@ const Table = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {renderTableRows(props.list, props.headers)}
+                {renderTableRows(props.list, props.headers, selectAll)}
             </tbody>
         </table>
     )

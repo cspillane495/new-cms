@@ -31,9 +31,9 @@ function App(props) {
       <MainIndex path="/episodes/:id/edit" currentUser={props.currentUser} component={EpisodesShow}/>
       <MainIndex path="/users" exact currentUser={props.currentUser} component={Users} />
       <LoginIndex path="/login" component={Login} currentUser={props.currentUser}/>
-        <div>
-          <Link to="/">Go Back</Link>
-        </div>
+      <div>
+        <Link to="/">Go Back</Link>
+      </div>
     </Switch>
   );
 }
