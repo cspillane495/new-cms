@@ -1,6 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 
+const sizes = ["xs", "sm", "md", "lg", "xl", "xxl", "size"];
+
 const Col = (props) => {
   const checkProps = () => {
     const propsKeys = Object.keys(props);
@@ -11,8 +13,6 @@ const Col = (props) => {
     return filteredPropKeys.length < 1;
   };
 
-  console.log("[COL CHECK PROPS]", checkProps());
-
   const classes = classnames(
     { col: checkProps() },
     { [`col-sm-${props.sm}`]: props.sm },
@@ -21,6 +21,7 @@ const Col = (props) => {
     { [`col-xl-${props.xl}`]: props.xl },
     { [`col-xxl-${props.xxl}`]: props.xxl },
     { [`col-${props.col}`]: props.col },
+    { [`align-self-${props.align}`]: props.align },
     props.className
   );
   return (
