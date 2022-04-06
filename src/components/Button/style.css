@@ -1,6 +1,19 @@
-/* .btn{
-    background-color: aquamarine;
-} */
-/* .btn:hover{
-    background-color: aquamarine;
-} */
+.btn {
+  padding: 0.6em;
+  border: 1px solid #ffffff38;
+  border-radius: 2px;
+  font-size: 0.9em;
+}
+
+.btn-primary {
+  background-color: #00dac6;
+}
+
+.btn-disabled {
+  background-color: #ffffff;
+  opacity: 0.38;
+}
+
+.btn-stretch {
+  inline-size: -webkit-fill-available;
+}

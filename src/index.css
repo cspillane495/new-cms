@@ -1,17 +1,60 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #121212;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 ul {
   list-style: none;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ffffff;
+}
+
+/* COLORS */
+/* 
+  DEFAULT DARK
+
+  background: #121212 
+  side nav background: #212a35 
+  cards: #1e1e1e
+  fonts: #e2e2e2
+  sub fonts: #767676
+  header text: #d3d3d3
+  input: 
+
+  primary: #59cac3 or #00dac6
+  secondary: #c38fff
+
+//////////////////////
+
+  DARK BLUISH TINT
+
+  background: #384351 
+  side nav background: #212a35 
+  cards: #212a35 or #23303c, need to see what works better
+  fonts: #7b8185, may need some tweaking
+  active text: #d6dbdc, may need some tweaking
+  headers: #c1c5c8
+  input: #ffffff ??
+
+  primary: #59cac3
+  secondary: #fd8987
+
+
+*/

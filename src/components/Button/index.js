@@ -1,24 +1,27 @@
-import React from 'react';
+import React from "react";
+import classnames from "classnames";
 import "./style.css";
 
-const Button = (props) => { 
-    return (
-        <button 
-            className="btn btn-primary"
-            onClick={props.onClick}
-            type={props.type}
-            
-        >
-            {setTitle(props)}
-        </button>
-    )
-} 
+const Button = (props) => {
+  const classes = classnames(
+    "btn",
+    `btn-${props.color ? props.color : "primary"}`,
+    { "btn-disabled": props.disabled },
+    { "btn-stretch": props.stretch }
+  );
 
-function setTitle({title, children}) {
-    if(!title){
-        return children
-    }
-    return title
+  return (
+    <button className={classes} onClick={props.onClick} type={props.type}>
+      {setTitle(props)}
+    </button>
+  );
+};
+
+function setTitle({ title, children }) {
+  if (!title) {
+    return children;
+  }
+  return title;
 }
 
 export default Button;

@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-
+const sizes = ["xs", "sm", "md", "lg", "xl", "xxl", "size", "col"];
 const Col = (props) => {
   const checkProps = () => {
     const propsKeys = Object.keys(props);
