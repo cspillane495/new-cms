@@ -20,7 +20,7 @@ const DashboardLayout = (props) => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Header />
           <ContentWrapper>{props.children}</ContentWrapper>
-          <SettingsSidebar />
+          {/* <SettingsSidebar /> */}
         </div>
       </NavWrapper>
     </Root>

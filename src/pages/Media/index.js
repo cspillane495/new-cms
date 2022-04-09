@@ -35,40 +35,6 @@ const Media = (props) => {
     []
   );
 
-  const headers = [
-    {
-      title: "Name",
-      dataIndex: "name",
-      edit: {
-        onSave: saveMediaItem,
-      },
-    },
-    {
-      title: "Category",
-      dataIndex: "category",
-      edit: {
-        onSave: saveMediaItem,
-        select: true,
-        selectOptions: mediaCategories,
-      },
-    },
-    { title: "Type", dataIndex: "type" },
-    { title: "Size", dataIndex: "size" },
-    {
-      title: "View",
-      dataIndex: "path",
-      render: ({ path }, { type }) => {
-        const link = def.ROOT_URL + path;
-        return <TableImg src={link} type={type} />;
-        // (
-        //     <div className="table-items-picture">
-        //         <img src={link} />
-        //     </div>
-        // )
-      },
-    },
-  ];
-
   useEffect(() => {
     props.fetchMediaItems();
   }, []);
