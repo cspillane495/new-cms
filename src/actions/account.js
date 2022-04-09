@@ -11,6 +11,7 @@ export const fetchCurrentUser = () => async (dispatch) => {
   dispatch({ type: FETCH_CURRENT_USER, payload: res.data.user });
   dispatch({ type: FETCH_LOADING, payload: false });
 };
+
 export const userLogin = (values, history) => async (dispatch) => {
   dispatch({ type: FETCH_LOADING, payload: true });
 
@@ -18,7 +19,7 @@ export const userLogin = (values, history) => async (dispatch) => {
     method: "post",
     data: { user: values },
   });
-  console.log(res.data);
+  // console.log(res.data);
   setToken(res.data.user.apiTok);
   dispatch({ type: FETCH_CURRENT_USER, payload: res.data.user });
   history.push(res.data.redirect);

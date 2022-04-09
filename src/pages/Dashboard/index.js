@@ -5,9 +5,9 @@ import EditableItem from "../../components/Table/EditableItem";
 const Dashboard = (props) => {
   // console.log(props);
   return (
-    <Container>
+    <div>
       <h2>Dashboard</h2>
-    </Container>
+    </div>
   );
 };
 

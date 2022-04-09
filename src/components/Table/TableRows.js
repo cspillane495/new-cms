@@ -1,15 +1,20 @@
 import Radio from "../Radio";
 import EditableItem from "./EditableItem";
 
-const TableRows = ({list, headers, ...props}) => {
-    console.log('[TABLE ROW PROPS]', headers)
-    if(list.length === 0) return <tr><td>'No Data'</td></tr>;
-    return list.map((rowItem, i) => {
-        return (
-            <tr key={i}>
-                <th>
-                    {i + 1}
-                    {/* {
+const TableRows = ({ list, headers, ...props }) => {
+  // console.log('[TABLE ROW PROPS]', headers)
+  if (list.length === 0)
+    return (
+      <tr>
+        <td>'No Data'</td>
+      </tr>
+    );
+  return list.map((rowItem, i) => {
+    return (
+      <tr key={i}>
+        <th>
+          {i + 1}
+          {/* {
                         props.checkbox ? (
                             <Radio 
                                 onChange={selectSingleTableItem}
@@ -18,33 +23,37 @@ const TableRows = ({list, headers, ...props}) => {
                             />
                         ) : i + 1
                     } */}
-                </th>
+        </th>
+        {headers.map((headerItem, i) => {
+          // console.log('[HEADER LIST MAP]',headerItem, rowItem);
+          const renderData = headerItem.render
+            ? headerItem.render(
                 {
-                    headers.map((headerItem, i) => {
-                        // console.log('[HEADER LIST MAP]',headerItem, rowItem);
-                        const renderData = headerItem.render ? (
-                            headerItem.render({ [headerItem.dataIndex]: rowItem[headerItem.dataIndex], id: rowItem._id}, rowItem)
-                        ) : rowItem[headerItem.dataIndex];
-                        return (
-                            <td key={i}>
-                                {
-                                    headerItem.edit ? (
-                                        <EditableItem
-                                            edit={headerItem.edit}
-                                            dataIndex={headerItem.dataIndex}
-                                            rowItem={rowItem}
-                                        >
-                                            {renderData}
-                                        </EditableItem>
-                                    ) : renderData
-                                }
-                            </td>
-                        )
-                    })
-                }
-            </tr>
-        )
-    })  
-}
+                  [headerItem.dataIndex]: rowItem[headerItem.dataIndex],
+                  id: rowItem._id,
+                },
+                rowItem
+              )
+            : rowItem[headerItem.dataIndex];
+          return (
+            <td key={i}>
+              {headerItem.edit ? (
+                <EditableItem
+                  edit={headerItem.edit}
+                  dataIndex={headerItem.dataIndex}
+                  rowItem={rowItem}
+                >
+                  {renderData}
+                </EditableItem>
+              ) : (
+                renderData
+              )}
+            </td>
+          );
+        })}
+      </tr>
+    );
+  });
+};
 
 export default TableRows;

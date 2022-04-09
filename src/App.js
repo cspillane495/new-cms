@@ -7,16 +7,14 @@ import { renderFlatMap } from "./utils/route.utils";
 import MainIndex from "./layouts";
 import LoginIndex from "./layouts/LoginIndex";
 
-const formattedRoutes = renderFlatMap(routes);
-
-console.log("[ FORMATTED ROUTES ]", formattedRoutes);
-
 const layouts = {
   dashboard: MainIndex,
   login: LoginIndex,
 };
 
 function App(props) {
+  const formattedRoutes = renderFlatMap(routes);
+
   useEffect(() => {
     props.fetchCurrentUser();
   }, [props.currentUser.active]);

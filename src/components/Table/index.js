@@ -1,53 +1,165 @@
-import Radio from '../Radio';
-import { useState } from 'react';
-import useForm from '../../hooks/formHook';
-import EditableItem from './EditableItem';
-import TableRows from './TableRows';
-import './index.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useTable, useFilters, useRowSelect, usePagination } from "react-table";
+import "./style.css";
 
-const Table = (props) => {
-    const tableName = props.id || props.name;
-    const {form, setForm} = useForm();
-    const [selectAll, setSelectAll] = useState(false);
-    function renderHeaders(headersList) {
-        if(!headersList) return null
-        return headersList.map((item, i) => {
-            return <th key={i}>{item.title}</th>
-        })
-    }
+const IndeterminateCheckbox = React.forwardRef(
+  ({ indeterminate, ...rest }, ref) => {
+    const defaultRef = React.useRef();
+    const resolvedRef = ref || defaultRef;
 
-    function selectSingleTableItem(e) {
-        // console.log(e)
-        const obj = {id: e.target.id, value: e.target};
-        setForm(obj)
-    }
-
-    function selectAllRadioChange(e) {
-        // const selectAllOnChange = props.rowSelection.onChange;
-        const obj = {id: e.target.id, value: e.target};
-        
-        setForm(obj)
-    }
+    React.useEffect(() => {
+      resolvedRef.current.indeterminate = indeterminate;
+    }, [resolvedRef, indeterminate]);
 
     return (
-        <table className="table">
-            <thead className="table-header">
-                <tr>
-                    <th scope='col'>
-                        <Radio 
-                            onChange={selectAllRadioChange}
-                            value={form.selectAllTableItems}
-                            id="selectAllTableItems"
-                        />
-                    </th>
-                    {renderHeaders(props.headers)}
-                </tr>
-            </thead>
-            <tbody>
-                <TableRows {...props} />
-            </tbody>
-        </table>
-    )
-}
+      <>
+        <input type="checkbox" ref={resolvedRef} {...rest} />
+      </>
+    );
+  }
+);
 
-export default Table;
+export default function Table({ columns, data }) {
+  console.log(columns, data);
+  const [filterInput, setFilterInput] = useState("");
+  // Use the state and functions returned from useTable to build your UI
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    prepareRow,
+    page, // Instead of using 'rows', we'll use page,
+    // which has only the rows for the active page
+
+    // The rest of these things are super handy, too ;)
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
+    selectedFlatRows,
+    state: { pageIndex, pageSize, selectedRowIds },
+  } = useTable(
+    {
+      columns,
+      data,
+    },
+    usePagination,
+    useRowSelect,
+    (hooks) => {
+      hooks.visibleColumns.push((columns) => [
+        // Let's make a column for selection
+        {
+          id: "selection",
+          // The header can use the table's getToggleAllRowsSelectedProps method
+          // to render a checkbox
+          Header: ({ getToggleAllPageRowsSelectedProps }) => (
+            <div>
+              <IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} />
+            </div>
+          ),
+          // The cell can use the individual row's getToggleRowSelectedProps method
+          // to the render a checkbox
+          Cell: ({ row }) => (
+            <div>
+              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+            </div>
+          ),
+        },
+        ...columns,
+      ]);
+    }
+  );
+
+  return (
+    <div className="tableWrap">
+      <table style={{}} {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {page.map((row, i) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  console.log(cell);
+                  return (
+                    <td
+                      style={cell.column.id === "selection" ? { width: 0 } : {}}
+                      {...cell.getCellProps()}
+                    >
+                      {cell.column.id === "name" ? (
+                        <Link to="/">{cell.render("Cell")}</Link>
+                      ) : (
+                        cell.render("Cell")
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {/* 
+        Pagination can be built however you'd like. 
+        This is just a very basic UI implementation:
+      */}
+      <div className="pagination">
+        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          {"<<"}
+        </button>{" "}
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+          {"<"}
+        </button>{" "}
+        <button onClick={() => nextPage()} disabled={!canNextPage}>
+          {">"}
+        </button>{" "}
+        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          {">>"}
+        </button>{" "}
+        <span>
+          Page{" "}
+          <strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>{" "}
+        </span>
+        <span>
+          | Go to page:{" "}
+          <input
+            type="number"
+            defaultValue={pageIndex + 1}
+            onChange={(e) => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0;
+              gotoPage(page);
+            }}
+            style={{ width: "100px" }}
+          />
+        </span>{" "}
+        <select
+          value={pageSize}
+          onChange={(e) => {
+            setPageSize(Number(e.target.value));
+          }}
+        >
+          {[10, 20, 30, 40, 50].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
+}

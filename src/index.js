@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap-grid.min.css";
+// import "bootstrap/dist/css/bootstrap-grid.min.css";
 import "./index.css";
+import "./styles/layout.css";
+import "./styles/colors.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";

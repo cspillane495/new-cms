@@ -4,27 +4,30 @@ import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import { logout } from "../../actions/account";
 import "./style.css";
+import Root from "../Root";
+import NavWrapper from "../../components/NavWrapper";
+import Header from "../../components/Header";
+import routes from "../../config/routes.config";
+import { renderNavItems } from "../../utils/route.utils";
+import ContentWrapper from "./ContentWrapper";
+import SettingsSidebar from "../../components/SettingsSidebar";
+const navItems = renderNavItems(routes);
 
 const DashboardLayout = (props) => {
-  const [collapsed, setCollapsed] = useState(true);
-
   const layout = (
-    <div>
-      <Navbar
-        history={props.history}
-        brand="Wine Reels CMS"
-        onClick={() => setCollapsed(!collapsed)}
-        collapsed={collapsed}
-        logout={props.logout}
-      />
-      <Sidebar className="side-nav">
-        <h2>CMS</h2>
-      </Sidebar>
-      <div className="content">{props.children}</div>
-    </div>
+    <Root>
+      <NavWrapper navItems={navItems}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <Header />
+          <ContentWrapper>{props.children}</ContentWrapper>
+          <SettingsSidebar />
+        </div>
+      </NavWrapper>
+    </Root>
   );
   return layout;
 };
+
 function mapStatetoProps() {
   return {};
 }

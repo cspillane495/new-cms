@@ -11,14 +11,14 @@ const Login = (props) => {
   }
 
   return (
-    <Container className="login-page">
+    <div className="login-page">
       <h4>Login</h4>
-      <Row>
+      <div>
         <Card>
           <LoginForm {...props} />
         </Card>
-      </Row>
-    </Container>
+      </div>
+    </div>
   );
 };
 function mapsStateToProps({ loading }) {

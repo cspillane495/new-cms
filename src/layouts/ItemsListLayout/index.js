@@ -1,51 +1,49 @@
-import { Container, Row, Col } from '../../components/Grid';
-import Table from '../../components/Table';
-import { Link } from 'react-router-dom';
-import Button from '../../components/Button';
-import { ChevronLeft } from 'react-bootstrap-icons';
-import './index.css';
+import { Container, Row, Col } from "../../components/Grid";
+import Table from "../../components/Table";
+import { Link } from "react-router-dom";
+import Button from "../../components/Button";
+import { ChevronLeft } from "react-bootstrap-icons";
+import "./index.css";
+import React, { useMemo, useState, useEffect } from "react";
+import axios from "axios";
+const Genres = ({ values }) => {
+  return (
+    <>
+      {values.map((genre, idx) => {
+        return (
+          <span key={idx} className="badge">
+            {genre}
+          </span>
+        );
+      })}
+    </>
+  );
+};
 
 const ItemsListLayout = (props) => {
-    return (
-        <Container>
-            <Row>
-                <Link to={props.back}><ChevronLeft /></Link>
-                <h2>{props.title}</h2>
-            </Row>
-            <Link to={props.path}>
-                <Button>
-                    Add New
-                </Button>
-            </Link>
-            <Row>
-                <Col>
-                    <Table 
-                        headers={props.headers} 
-                        list={props.list} 
-                        checkbox
-                        {...props}
-                    />
-                </Col>
-            </Row>
-        </Container>        
-    )
-}
-
-export const TableImg = (props) => {
-    const noData = 'No image data';
-   
-    switch(props.type) {
-        case 'audio/mpeg': 
-            return noData
-        case 'video/mp4': 
-            return noData
-        default:
-            return (
-                <div className="table-item-image">
-                    <img src={props.src} />
-                </div>
-            )
-    }
-}
+  return (
+    <div>
+      <div>
+        <Link to={props.back}>
+          <ChevronLeft />
+        </Link>
+        <h2>{props.title}</h2>
+      </div>
+      <Link to={props.path}>
+        <Button>Add New</Button>
+      </Link>
+      <div>
+        <div col={12}>
+          <Table
+            columns={props.columns}
+            data={props.data}
+            // checkbox
+            // {...props}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ItemsListLayout;

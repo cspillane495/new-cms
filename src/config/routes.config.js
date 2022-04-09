@@ -11,34 +11,45 @@ import Users from "../pages/Users";
 
 export default [
   {
+    title: "Dashboard",
     path: "/dashboard",
     exact: true,
     component: Dashboard,
     layout: "dashboard",
   },
   {
+    title: "Media",
     path: "/media",
     component: Media,
     layout: "dashboard",
     children: [{ path: "/upload", component: Upload, layout: "dashboard" }],
   },
   {
+    title: "Episodes",
     path: "/episodes",
     component: Episodes,
     layout: "dashboard",
     children: [
       {
+        title: "Create Episodes",
         path: "/create",
         component: EpisodesShow,
         layout: "dashboard",
       },
       {
+        title: "Update Episode",
         path: "/:id/edit",
         component: EpisodesShow,
         layout: "dashboard",
       },
     ],
   },
-  { path: "/users", component: Users, layout: "dashboard" },
-  { path: "/login", exact: true, component: Login, layout: "login" },
+  { title: "Users", path: "/users", component: Users, layout: "dashboard" },
+  {
+    title: "Login",
+    path: "/login",
+    exact: true,
+    component: Login,
+    layout: "login",
+  },
 ];

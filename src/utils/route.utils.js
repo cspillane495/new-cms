@@ -5,10 +5,21 @@ export const renderNavItems = (arr, child, parent) => {
   const removeNonNavItems = routes.filter((item) => {
     return !item.removeFromMenu;
   });
+  const mapFiltered = removeNonNavItems.map((item) => {
+    if (item.children) {
+      return {
+        path: item.path,
+        title: item.title,
+        children: renderNavItems(item.children),
+      };
+    }
+    return {
+      path: item.path,
+      title: item.title,
+    };
+  });
 
-  console.log(removeNonNavItems);
-
-  // const mapFiltered = filteredItem.map((items) => {});
+  return mapFiltered;
 };
 
 export const getChildWithParentPath = (arr, parentPath) => {
