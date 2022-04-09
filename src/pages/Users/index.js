@@ -1,11 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "../../components/Grid";
 import ItemsListLayout from "../../layouts/ItemsListLayout";
 import { fetchUsers } from "../../actions/users";
-const headers = [{ title: "Email", dataIndex: "email" }];
+
 const Users = (props) => {
   const list = props.users;
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Name",
+        accessor: "name",
+      },
+      {
+        Header: "Category",
+        accessor: "category",
+      },
+      {
+        Header: "Type",
+        accessor: "type",
+      },
+    ],
+    []
+  );
   useEffect(() => {
     props.fetchUsers();
   }, []);
@@ -13,7 +30,14 @@ const Users = (props) => {
     <div>
       <div>
         <div>
-          <ItemsListLayout list={list} headers={headers} />
+          <ItemsListLayout
+            editable
+            back="/"
+            data={list}
+            columns={columns}
+            path="/users/create"
+            title="Users"
+          />
         </div>
       </div>
     </div>

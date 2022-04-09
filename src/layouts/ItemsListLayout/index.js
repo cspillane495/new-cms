@@ -6,6 +6,7 @@ import { ChevronLeft } from "react-bootstrap-icons";
 import "./index.css";
 import React, { useMemo, useState, useEffect } from "react";
 import axios from "axios";
+
 const Genres = ({ values }) => {
   return (
     <>
@@ -23,7 +24,7 @@ const Genres = ({ values }) => {
 const ItemsListLayout = (props) => {
   return (
     <div>
-      <div>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <Link to={props.back}>
           <ChevronLeft />
         </Link>
@@ -34,12 +35,7 @@ const ItemsListLayout = (props) => {
       </Link>
       <div>
         <div col={12}>
-          <Table
-            columns={props.columns}
-            data={props.data}
-            // checkbox
-            // {...props}
-          />
+          <Table columns={props.columns} data={props.data} {...props} />
         </div>
       </div>
     </div>
