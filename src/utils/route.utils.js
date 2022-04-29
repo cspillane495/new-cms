@@ -40,7 +40,6 @@ export const renderFlatMap = (arr) => {
   routes.forEach((route) => {
     if (route.children) {
       finalArr.push(...getChildWithParentPath(route.children, route.path));
-      delete route.children;
     }
     return finalArr.push(route);
   });

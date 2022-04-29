@@ -4,11 +4,10 @@ import Input from "../Input";
 import Button from "../Button";
 
 const LoginForm = (props) => {
-  const { form, setForm } = useForm();
+  const { form, updateForm } = useForm();
   const changeInput = (e) => {
     const obj = { id: e.target.id, value: e.target.value };
-    // setFormTitle(obj.value)
-    setForm(obj);
+    updateForm(obj);
   };
 
   const submitLogin = () => {

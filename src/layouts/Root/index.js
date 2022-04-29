@@ -48,6 +48,10 @@ const Root = ({ children }) => {
     setNavDocked,
   };
 
+  const style = {
+    root: { display: "flex", flexDirection: "row" },
+  };
+
   return (
     <LayoutContext.Provider value={layout}>
       <Media
@@ -57,7 +61,7 @@ const Root = ({ children }) => {
           setNavOpen(isLarge);
         }}
       />
-      <div>{children}</div>
+      <div style={style.root}>{children}</div>
     </LayoutContext.Provider>
   );
 };

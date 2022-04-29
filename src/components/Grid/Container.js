@@ -15,6 +15,14 @@ const Container = (props) => {
     paddingRight: padding,
     paddingLeft: padding,
   };
+  // const classes = classnames(
+  //   { container: !cx.navOpen && !props.size },
+  //   { [`container-${props.size}`]: !cx.navOpen && props.size },
+  //   { [`container-nav-open`]: cx.navOpen && !props.size },
+  //   // { container: !props.fluid },
+  //   // { "container-fluid": props.fluid },
+  //   props.className
+  // );
   return (
     <div style={styles}>
       {React.Children.map(props.children, (child) => {

@@ -7,7 +7,7 @@ import "./index.css";
 
 const Table = (props) => {
   const tableName = props.id || props.name;
-  const { form, setForm } = useForm();
+  const { form, updateForm } = useForm();
   const [selectAll, setSelectAll] = useState(false);
   function renderHeaders(headersList) {
     if (!headersList) return null;
@@ -19,14 +19,14 @@ const Table = (props) => {
   function selectSingleTableItem(e) {
     // console.log(e)
     const obj = { id: e.target.id, value: e.target };
-    setForm(obj);
+    updateForm(obj);
   }
 
   function selectAllRadioChange(e) {
     // const selectAllOnChange = props.rowSelection.onChange;
     const obj = { id: e.target.id, value: e.target };
 
-    setForm(obj);
+    updateForm(obj);
   }
 
   return (

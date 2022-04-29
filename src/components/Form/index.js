@@ -1,6 +1,4 @@
-import Form from './Form';
-import FormItem from './FormItem';
+import Form from "./Form";
+import FormItem from "./FormItem";
 
-export {
-    Form, FormItem
-}
+export { Form, FormItem };

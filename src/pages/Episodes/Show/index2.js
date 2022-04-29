@@ -29,7 +29,7 @@ const categoryOptions = [
 
 const EpisodesShow = (props) => {
   let id;
-  const { form, setForm, setFormInitValues } = useForm();
+  const { form, updateForm, setForm } = useForm();
 
   useEffect(() => {
     id = props.match.params.id;
@@ -47,7 +47,7 @@ const EpisodesShow = (props) => {
 
   const changeInput = (e) => {
     const obj = { id: e.target.id, value: e.target.value };
-    setForm(obj);
+    updateForm(obj);
   };
 
   const submitForm = () => {
@@ -89,7 +89,7 @@ const EpisodesShow = (props) => {
 
     // console.log(values)
 
-    setFormInitValues(values);
+    setForm(values);
   };
 
   if (props.loading) {

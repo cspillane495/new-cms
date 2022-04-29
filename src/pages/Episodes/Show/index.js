@@ -13,15 +13,15 @@ import {
 } from "../../../actions/episodes";
 import { fetchMediaItems } from "../../../actions/media";
 import { getMediaTitlesByType } from "./utils";
-import "./style.css";
 import {
   categoryOptions,
   typeOptions,
 } from "../../../resources/tableDefinitions";
+// import "./style.css";
 
 const EpisodesShow = (props) => {
   let id;
-  const { form, setForm, setFormInitValues } = useForm();
+  const { form, updateForm, setForm } = useForm();
 
   useEffect(() => {
     id = props.match.params.id;
@@ -39,20 +39,20 @@ const EpisodesShow = (props) => {
 
   const changeInput = (e) => {
     const obj = { id: e.target.id, value: e.target.value };
-    setForm(obj);
+    updateForm(obj);
   };
 
   const submitForm = () => {
     id = props.match.params.id;
     const formItems = {
-      title: form["episode-title"],
-      type: form["episode-type"],
-      category: form["episode-category"],
-      tags: form["episode-tags"],
-      videoLink: form["episode-videoLink"],
-      thumbnail: form["episode-thumbnail"],
-      desc: form["episode-description"],
-      releaseDate: form["episode-releaseDate"],
+      title: form.title,
+      type: form.type,
+      category: form.category,
+      tags: form.tags,
+      videoLink: form.videoLink,
+      thumbnail: form.thumbnail,
+      desc: form.description,
+      releaseDate: form.releaseDate,
     };
 
     if (!id) {
@@ -69,19 +69,17 @@ const EpisodesShow = (props) => {
     }
 
     const values = {
-      "episode-title": initVals.title,
-      "episode-type": initVals.type,
-      "episode-category": initVals.category,
-      "episode-tags": initVals.tags,
-      "episode-thumbnail": initVals.thumbnail,
-      "episode-description": initVals.desc,
-      "episode-videoLink": initVals.videoLink,
-      "episode-releaseDate": initVals.releaseDate,
+      title: initVals.title,
+      type: initVals.type,
+      category: initVals.category,
+      tags: initVals.tags,
+      thumbnail: initVals.thumbnail,
+      description: initVals.desc,
+      videoLink: initVals.videoLink,
+      releaseDate: initVals.releaseDate,
     };
 
-    // console.log(values)
-
-    setFormInitValues(values);
+    setForm(values);
   };
 
   if (props.loading) {
@@ -95,9 +93,9 @@ const EpisodesShow = (props) => {
           <div sm={12}>
             <FormItem>
               <Input
-                id="episode-title"
+                id="title"
                 placeholder="Title"
-                value={form["episode-title"]}
+                value={form.title}
                 onChange={changeInput}
               />
             </FormItem>
@@ -106,9 +104,9 @@ const EpisodesShow = (props) => {
             <FormItem>
               <Select
                 options={typeOptions}
-                id="episode-type"
+                id="type"
                 placeholder="Select a Type"
-                value={form["episode-type"]}
+                value={form.type}
                 onChange={changeInput}
               />
             </FormItem>
@@ -117,9 +115,9 @@ const EpisodesShow = (props) => {
             <FormItem>
               <Select
                 options={categoryOptions}
-                id="episode-category"
+                id="category"
                 placeholder="Select a Category"
-                value={form["episode-category"]}
+                value={form.category}
                 onChange={changeInput}
               />
             </FormItem>
@@ -127,9 +125,9 @@ const EpisodesShow = (props) => {
           <div sm={12}>
             <FormItem>
               <Input
-                id="episode-tags"
+                id="tags"
                 placeholder="Tags"
-                value={form["episode-tags"]}
+                value={form.tags}
                 onChange={changeInput}
               />
             </FormItem>
@@ -137,9 +135,9 @@ const EpisodesShow = (props) => {
           <div sm={12}>
             <FormItem>
               <Input
-                id="episode-description"
+                id="description"
                 placeholder="Description"
-                value={form["episode-description"]}
+                value={form.description}
                 onChange={changeInput}
               />
             </FormItem>
@@ -147,9 +145,9 @@ const EpisodesShow = (props) => {
           <div sm={12}>
             <FormItem>
               <Input
-                id="episode-releaseDate"
+                id="releaseDate"
                 placeholder="Release Date"
-                value={form["episode-releaseDate"]}
+                value={form.releaseDate}
                 onChange={changeInput}
               />
             </FormItem>
@@ -161,9 +159,9 @@ const EpisodesShow = (props) => {
                   props.mediaItems,
                   "episode/promo"
                 )}
-                id="episode-videoLink"
+                id="videoLink"
                 placeholder="Select a Video"
-                value={form["episode-videoLink"]}
+                value={form.videoLink}
                 onChange={changeInput}
               />
             </FormItem>
@@ -172,9 +170,9 @@ const EpisodesShow = (props) => {
             <FormItem>
               <Select
                 options={getMediaTitlesByType(props.mediaItems, "thumbnail")}
-                id="episode-thumbnail"
+                id="thumbnail"
                 placeholder="Select a Thumbnail"
-                value={form["episode-thumbnail"]}
+                value={form.thumbnail}
                 onChange={changeInput}
               />
             </FormItem>

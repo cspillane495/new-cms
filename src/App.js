@@ -21,8 +21,7 @@ function App(props) {
 
   const renderRoutes = (arr) => {
     if (arr.length < 1) return;
-    const routes = arr;
-    return routes.map((item, i) => {
+    return formattedRoutes.map((item, i) => {
       const Layout = layouts[item.layout];
       return <Layout {...item} currentUser={props.currentUser} key={i} />;
     });

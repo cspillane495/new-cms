@@ -9,7 +9,7 @@ import Media from "../pages/Media";
 import Upload from "../components/Upload";
 import Users from "../pages/Users";
 
-export default [
+const routes = [
   {
     title: "Dashboard",
     path: "/dashboard",
@@ -22,29 +22,45 @@ export default [
     path: "/media",
     component: Media,
     layout: "dashboard",
-    children: [{ path: "/upload", component: Upload, layout: "dashboard" }],
+    children: [
+      {
+        title: "Upload Media",
+        path: "/upload",
+        component: Upload,
+        layout: "dashboard",
+      },
+    ],
   },
   {
     title: "Episodes",
     path: "/episodes",
     component: Episodes,
     layout: "dashboard",
+    exact: true,
     children: [
       {
         title: "Create Episodes",
         path: "/create",
         component: EpisodesShow,
+        exact: true,
         layout: "dashboard",
       },
       {
         title: "Update Episode",
         path: "/:id/edit",
+        exact: true,
         component: EpisodesShow,
         layout: "dashboard",
       },
     ],
   },
-  { title: "Users", path: "/users", component: Users, layout: "dashboard" },
+  {
+    title: "Users",
+    exact: true,
+    path: "/users",
+    component: Users,
+    layout: "dashboard",
+  },
   {
     title: "Login",
     path: "/login",
@@ -53,3 +69,5 @@ export default [
     layout: "login",
   },
 ];
+
+export default routes;

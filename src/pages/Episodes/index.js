@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Row, Container, Col } from "../../components/Grid";
-import ItemsListLayout from "../../layouts/ItemsListLayout";
+import TableLayout from "../../layouts/TableLayout";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEpisodes, updateEpisode } from "../../actions/episodes";
@@ -9,7 +9,7 @@ import ToggleSwitch from "../../components/ToggleSwitch";
 
 const Episodes = (props) => {
   const list = props.episodes;
-  const { form, clearForm, setForm } = useForm();
+  const { form, clearForm, updateForm } = useForm();
 
   useEffect(() => {
     props.fetchEpisodes();
@@ -17,7 +17,7 @@ const Episodes = (props) => {
 
   const onToggled = (id, active) => {
     props.updateEpisode({ active: !active }, id);
-    setForm({ id: "episode-toggled" + "-" + id, value: !active });
+    updateForm({ id: "episode-toggled" + "-" + id, value: !active });
   };
 
   const columns = useMemo(
@@ -74,7 +74,7 @@ const Episodes = (props) => {
     <div>
       <div>
         <div>
-          <ItemsListLayout
+          <TableLayout
             back="/"
             data={list}
             columns={columns}

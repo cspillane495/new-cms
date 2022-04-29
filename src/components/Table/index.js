@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTable, useFilters, useRowSelect, usePagination } from "react-table";
-import "./style.css";
+// import "./style.css";
 
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {
@@ -21,7 +21,7 @@ const IndeterminateCheckbox = React.forwardRef(
 );
 
 export default function Table({ columns, data }) {
-  console.log(columns, data);
+  // console.log(columns, data);
   const [filterInput, setFilterInput] = useState("");
   // Use the state and functions returned from useTable to build your UI
   const {
@@ -93,7 +93,7 @@ export default function Table({ columns, data }) {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
-                  console.log(cell);
+                  // console.log(cell);
                   return (
                     <td
                       style={cell.column.id === "selection" ? { width: 0 } : {}}

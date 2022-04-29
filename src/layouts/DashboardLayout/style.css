@@ -1,5 +1,6 @@
-.content {
-  transition: margin-left 0.5s;
-  height: 100vh;
-  padding-top: 4rem;
+.content-wrapper {
+  width: -webkit-fill-available;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1;
 }

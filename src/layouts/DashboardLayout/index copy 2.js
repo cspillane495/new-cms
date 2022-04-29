@@ -11,20 +11,19 @@ import routes from "../../config/routes.config";
 import { renderNavItems } from "../../utils/route.utils";
 import ContentWrapper from "./ContentWrapper";
 // import SettingsSidebar from "../../components/SettingsSidebar";
+
 const navItems = renderNavItems(routes);
 
 const DashboardLayout = (props) => {
   const layout = (
     <Root>
-      <Sidebar navItems={navItems} />
-      <ContentWrapper>{props.children}</ContentWrapper>
-      {/* <NavWrapper navItems={navItems}>
+      <NavWrapper navItems={navItems}>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Header />
           <ContentWrapper>{props.children}</ContentWrapper>
-          <SettingsSidebar />
+          {/* <SettingsSidebar /> */}
         </div>
-      </NavWrapper> */}
+      </NavWrapper>
     </Root>
   );
   return layout;

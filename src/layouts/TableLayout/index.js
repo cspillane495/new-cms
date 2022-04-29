@@ -3,9 +3,9 @@ import Table from "../../components/Table";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import { ChevronLeft } from "react-bootstrap-icons";
-import "./index.css";
 import React, { useMemo, useState, useEffect } from "react";
 import axios from "axios";
+// import "./index.css";
 
 const Genres = ({ values }) => {
   return (
@@ -21,7 +21,7 @@ const Genres = ({ values }) => {
   );
 };
 
-const ItemsListLayout = (props) => {
+const TableLayout = (props) => {
   return (
     <div>
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -42,4 +42,4 @@ const ItemsListLayout = (props) => {
   );
 };
 
-export default ItemsListLayout;
+export default TableLayout;

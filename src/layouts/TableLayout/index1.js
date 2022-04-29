@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "../../components/Grid";
 import Table from "../../components/Table";
 
-const ItemsListLayout = (props) => {
+const TableLayout = (props) => {
   const rowSelection = {
     onChange: (e) => {
       //selectedRowKeys, selectedRows) => {
@@ -35,4 +35,4 @@ const ItemsListLayout = (props) => {
   );
 };
 
-export default ItemsListLayout;
+export default TableLayout;

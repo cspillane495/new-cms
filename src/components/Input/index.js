@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import "./style.css";
+// import "./style.css";
 
 const Input = (props) => {
   const isCheckbox = props.type === "checkbox";

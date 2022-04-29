@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "../../components/Grid";
-import ItemsListLayout from "../../layouts/ItemsListLayout";
+import TableLayout from "../../layouts/TableLayout";
 import { fetchUsers } from "../../actions/users";
 
 const Users = (props) => {
@@ -30,7 +30,7 @@ const Users = (props) => {
     <div>
       <div>
         <div>
-          <ItemsListLayout
+          <TableLayout
             editable
             back="/"
             data={list}

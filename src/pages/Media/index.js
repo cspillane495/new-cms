@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "../../components/Grid";
 import Select from "../../components/Select";
-import ItemsListLayout from "../../layouts/ItemsListLayout";
+import TableLayout from "../../layouts/TableLayout";
 import { fetchMediaItems, updateMediaItem } from "../../actions/media";
 import { Link } from "react-router-dom";
 import def from "../../defaultSettings";
@@ -45,7 +45,7 @@ const Media = (props) => {
     <div className="container">
       <div>
         <div>
-          <ItemsListLayout
+          <TableLayout
             editable
             back="/"
             data={props.mediaItems}
