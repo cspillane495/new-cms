@@ -38,6 +38,7 @@ export const renderFlatMap = (arr) => {
   const finalArr = [];
 
   routes.forEach((route) => {
+    if (route.removeFromMenu) return;
     if (route.children) {
       finalArr.push(...getChildWithParentPath(route.children, route.path));
     }

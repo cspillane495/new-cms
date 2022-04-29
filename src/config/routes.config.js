@@ -67,6 +67,7 @@ const routes = [
     exact: true,
     component: Login,
     layout: "login",
+    removeFromMenu: true,
   },
 ];
 
