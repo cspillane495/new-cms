@@ -1,8 +1,8 @@
 .episode-media {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .episode-media ul {
-    display: contents;
+  display: contents;
 }

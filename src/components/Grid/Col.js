@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import "./col.scss";
 const sizes = ["xs", "sm", "md", "lg", "xl", "xxl", "size", "col"];
 const Col = (props) => {
   const checkProps = () => {

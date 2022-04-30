@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useTable, useFilters, useRowSelect, usePagination } from "react-table";
-// import "./style.css";
+import {
+  useTable,
+  useFilters,
+  useResizeColumns,
+  useRowSelect,
+  usePagination,
+} from "react-table";
+import "./style.scss";
 
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {
@@ -24,6 +30,14 @@ export default function Table({ columns, data }) {
   // console.log(columns, data);
   const [filterInput, setFilterInput] = useState("");
   // Use the state and functions returned from useTable to build your UI
+  const defaultColumn = React.useMemo(
+    () => ({
+      minWidth: 100,
+      width: 150,
+      maxWidth: 400,
+    }),
+    []
+  );
   const {
     getTableProps,
     getTableBodyProps,
@@ -47,23 +61,21 @@ export default function Table({ columns, data }) {
     {
       columns,
       data,
+      defaultColumn,
     },
     usePagination,
     useRowSelect,
+    useResizeColumns,
+    // useFilters,
     (hooks) => {
       hooks.visibleColumns.push((columns) => [
-        // Let's make a column for selection
         {
           id: "selection",
-          // The header can use the table's getToggleAllRowsSelectedProps method
-          // to render a checkbox
           Header: ({ getToggleAllPageRowsSelectedProps }) => (
             <div>
               <IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} />
             </div>
           ),
-          // The cell can use the individual row's getToggleRowSelectedProps method
-          // to the render a checkbox
           Cell: ({ row }) => (
             <div>
               <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
@@ -81,9 +93,22 @@ export default function Table({ columns, data }) {
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-              ))}
+              {headerGroup.headers.map((column) => {
+                console.log(column);
+                return (
+                  <th {...column.getHeaderProps()}>
+                    <div className="table-column-header">
+                      {column.render("Header")}
+                    </div>
+                    <div
+                      {...column.getResizerProps()}
+                      className={`resizer ${
+                        column.isResizing ? "isResizing" : ""
+                      }`}
+                    />
+                  </th>
+                );
+              })}
             </tr>
           ))}
         </thead>

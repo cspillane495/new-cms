@@ -19,23 +19,29 @@ import {
 } from "../../../resources/tableDefinitions";
 // import "./style.css";
 
-const EpisodesShow = (props) => {
+const EpisodesShow = ({
+  match,
+  fetchEpisode,
+  fetchMediaItems,
+  episode,
+  ...props
+}) => {
   let id;
   const { form, updateForm, setForm } = useForm();
 
   useEffect(() => {
-    id = props.match.params.id;
+    id = match.params.id;
     if (!id) {
       return;
     }
-    props.fetchEpisode(id);
+    fetchEpisode(id);
     // console.log("[PROPS]", props);
-    setInitVals(props.episode);
-  }, [props.episode._id]);
+    setInitVals(episode);
+  }, [episode._id, match]);
 
   useEffect(() => {
-    props.fetchMediaItems();
-  }, []);
+    fetchMediaItems();
+  }, [fetchMediaItems]);
 
   const changeInput = (e) => {
     const obj = { id: e.target.id, value: e.target.value };
@@ -90,7 +96,7 @@ const EpisodesShow = (props) => {
       <h3>Episodes Show</h3>
       <Form>
         <div>
-          <div sm={12}>
+          <Col sm={12}>
             <FormItem>
               <Input
                 id="title"
@@ -99,8 +105,8 @@ const EpisodesShow = (props) => {
                 onChange={changeInput}
               />
             </FormItem>
-          </div>
-          <div sm={6}>
+          </Col>
+          <Col sm={6}>
             <FormItem>
               <Select
                 options={typeOptions}
@@ -110,8 +116,8 @@ const EpisodesShow = (props) => {
                 onChange={changeInput}
               />
             </FormItem>
-          </div>
-          <div sm={6}>
+          </Col>
+          <Col sm={6}>
             <FormItem>
               <Select
                 options={categoryOptions}
@@ -121,8 +127,8 @@ const EpisodesShow = (props) => {
                 onChange={changeInput}
               />
             </FormItem>
-          </div>
-          <div sm={12}>
+          </Col>
+          <Col sm={12}>
             <FormItem>
               <Input
                 id="tags"
@@ -131,8 +137,8 @@ const EpisodesShow = (props) => {
                 onChange={changeInput}
               />
             </FormItem>
-          </div>
-          <div sm={12}>
+          </Col>
+          <Col sm={12}>
             <FormItem>
               <Input
                 id="description"
@@ -141,8 +147,8 @@ const EpisodesShow = (props) => {
                 onChange={changeInput}
               />
             </FormItem>
-          </div>
-          <div sm={12}>
+          </Col>
+          <Col sm={12}>
             <FormItem>
               <Input
                 id="releaseDate"
@@ -151,8 +157,8 @@ const EpisodesShow = (props) => {
                 onChange={changeInput}
               />
             </FormItem>
-          </div>
-          <div sm={6}>
+          </Col>
+          <Col sm={6}>
             <FormItem>
               <Select
                 options={getMediaTitlesByType(
@@ -165,8 +171,8 @@ const EpisodesShow = (props) => {
                 onChange={changeInput}
               />
             </FormItem>
-          </div>
-          <div sm={6}>
+          </Col>
+          <Col sm={6}>
             <FormItem>
               <Select
                 options={getMediaTitlesByType(props.mediaItems, "thumbnail")}
@@ -176,7 +182,7 @@ const EpisodesShow = (props) => {
                 onChange={changeInput}
               />
             </FormItem>
-          </div>
+          </Col>
           {/* <EpisodeMedia 
                             items={props.mediaItems}
                             form={form}

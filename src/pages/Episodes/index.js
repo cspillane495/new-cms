@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { fetchEpisodes, updateEpisode } from "../../actions/episodes";
 import useForm from "../../hooks/formHook";
 import ToggleSwitch from "../../components/ToggleSwitch";
+import { TABLE_COLUMNS } from "./table.config";
 
 const Episodes = (props) => {
   const list = props.episodes;
@@ -20,27 +21,7 @@ const Episodes = (props) => {
     updateForm({ id: "episode-toggled" + "-" + id, value: !active });
   };
 
-  const columns = useMemo(
-    () => [
-      {
-        Header: "Title",
-        accessor: "title",
-      },
-      {
-        Header: "Date",
-        accessor: "date",
-      },
-      {
-        Header: "Tags",
-        accessor: "tags",
-      },
-      {
-        Header: "Active",
-        accessor: "active",
-      },
-    ],
-    []
-  );
+  const columns = useMemo(() => TABLE_COLUMNS, []);
 
   const headers = [
     {
