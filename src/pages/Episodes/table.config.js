@@ -9,7 +9,7 @@ const dbKeys = [
       return <Link to={`/episodes/${e.row.original._id}/edit`}>{e.value}</Link>;
     },
   },
-  "date",
+  { id: "date" },
   "tags",
   "active",
 ];
