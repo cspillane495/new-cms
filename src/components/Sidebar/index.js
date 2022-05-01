@@ -36,26 +36,27 @@ const Sidebar = (props) => {
 
   const renderLinks = () => {
     return (
-      <Transition in={cx.navOpen} timeout={durationLink}>
-        {(state) => (
-          <div
-            style={{
-              ...linkStyle,
-              ...linkTransitionStyles[state],
-            }}
-          >
-            <div className="sidebar-header"></div>
-            <div className="sidebar-content">
-              {props.navItems.map((item, key) => (
-                <SidebarItem {...item} key={key} />
-              ))}
-              {/* <div className="sidebar-link">Home</div>
-              <div className="sidebar-link">About</div>
-              <div className="sidebar-link">Contact</div> */}
-            </div>
-          </div>
-        )}
-      </Transition>
+      <>
+        <div className="sidebar-header">
+          <Transition in={cx.navOpen} timeout={durationLink}>
+            {(state) => (
+              <div
+                style={{
+                  ...linkStyle,
+                  ...linkTransitionStyles[state],
+                }}
+              >
+                Site Name
+              </div>
+            )}
+          </Transition>
+        </div>
+        <div className="sidebar-content">
+          {props.navItems.map((item, key) => (
+            <SidebarItem {...item} key={key} />
+          ))}
+        </div>
+      </>
     );
   };
 

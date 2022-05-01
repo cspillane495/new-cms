@@ -1,6 +1,18 @@
+import { Link } from "react-router-dom";
 import { renderTableColumns } from "../../components/Table/table.utils";
 
-const dbKeys = ["title", "date", "tags", "active"];
+const dbKeys = [
+  {
+    id: "title",
+    Cell: (e) => {
+      console.log(e);
+      return <Link to={`/episodes/${e.row.original._id}/edit`}>{e.value}</Link>;
+    },
+  },
+  "date",
+  "tags",
+  "active",
+];
 
 export const TABLE_COLUMNS = renderTableColumns(dbKeys);
 console.log(TABLE_COLUMNS);

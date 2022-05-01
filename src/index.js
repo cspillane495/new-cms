@@ -8,15 +8,14 @@ import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
 import "./index.css";
 import "./styles/colors.css";
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
-  // <React.StrictMode>
   <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>,
-  // </React.StrictMode>,
   document.getElementById("root")
 );

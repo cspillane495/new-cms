@@ -7,8 +7,10 @@
 }
 
 .sidebar-header {
-  background-color: black;
+  /* background-color: black; */
   padding: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .sidebar .sidebar-link {
