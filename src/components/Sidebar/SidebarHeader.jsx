@@ -24,7 +24,7 @@ const SidebarHeader = (props) => {
   const cx = useContext(LayoutContext);
   const durationLink = {
     appear: 500,
-    enter: 300,
+    enter: 320,
     exit: 300,
   };
   const linkStyle = {
