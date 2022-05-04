@@ -3,6 +3,9 @@ import path from "path";
 export const renderNavItems = (arr, child, parent) => {
   const routes = arr;
   const removeNonNavItems = routes.filter((item) => {
+    if (item.children) {
+      item.children.filter((child) => !child.removeFromMenu);
+    }
     return !item.removeFromMenu;
   });
   const mapFiltered = removeNonNavItems.map((item) => {
@@ -10,10 +13,12 @@ export const renderNavItems = (arr, child, parent) => {
       return {
         path: item.path,
         title: item.title,
+        icon: item.icon,
         children: renderNavItems(item.children),
       };
     }
     return {
+      icon: item.icon,
       path: item.path,
       title: item.title,
     };

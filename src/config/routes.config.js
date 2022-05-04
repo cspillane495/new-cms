@@ -6,8 +6,16 @@ import Login from "../pages/Login";
 // import Account from "../pages/Account";
 // import ForgotPassword from "../pages/Account/ForgotPassword";
 import Media from "../pages/Media";
-import Upload from "../components/Upload";
+import UploadMedia from "../components/Upload";
 import Users from "../pages/Users";
+
+import {
+  Bullseye,
+  Collection,
+  Film,
+  Upload,
+  Person,
+} from "react-bootstrap-icons";
 
 const routes = [
   {
@@ -16,18 +24,21 @@ const routes = [
     exact: true,
     component: Dashboard,
     layout: "dashboard",
+    icon: Bullseye,
   },
   {
     title: "Media",
     path: "/media",
     component: Media,
     layout: "dashboard",
+    icon: Film,
     children: [
       {
         title: "Upload Media",
         path: "/upload",
-        component: Upload,
+        component: UploadMedia,
         layout: "dashboard",
+        icon: Upload,
       },
     ],
   },
@@ -37,6 +48,7 @@ const routes = [
     component: Episodes,
     layout: "dashboard",
     exact: true,
+    icon: Collection,
     children: [
       {
         title: "Create Episodes",
@@ -51,6 +63,7 @@ const routes = [
         exact: true,
         component: EpisodesShow,
         layout: "dashboard",
+        removeFromMenu: true,
       },
     ],
   },
@@ -60,6 +73,7 @@ const routes = [
     path: "/users",
     component: Users,
     layout: "dashboard",
+    icon: Person,
   },
   {
     title: "Login",

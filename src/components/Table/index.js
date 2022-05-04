@@ -113,7 +113,7 @@ export default function Table({ columns, data }) {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
+          {/* {page.map((row, i) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -134,7 +134,7 @@ export default function Table({ columns, data }) {
                 })}
               </tr>
             );
-          })}
+          })} */}
         </tbody>
       </table>
       {/* 
