@@ -5,7 +5,6 @@ const EditableItem = (props) => {
   const inputRef = useRef(null);
   const [inputVisible, setInputVisible] = useState(false);
   const [text, setText] = useState(props.children);
-  // console.log('PROPS', props)
   function onClickOutSide(e) {
     const target = e.target;
     // Check if user is clicking outside of <input>

@@ -27,7 +27,6 @@ const IndeterminateCheckbox = React.forwardRef(
 );
 
 export default function Table({ columns, data }) {
-  // console.log(columns, data);
   const [filterInput, setFilterInput] = useState("");
   // Use the state and functions returned from useTable to build your UI
   const defaultColumn = React.useMemo(
@@ -94,7 +93,6 @@ export default function Table({ columns, data }) {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => {
-                console.log(column);
                 return (
                   <th {...column.getHeaderProps()}>
                     <div className="table-column-header">
@@ -118,7 +116,6 @@ export default function Table({ columns, data }) {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
-                  // console.log(cell);
                   return (
                     <td
                       style={cell.column.id === "selection" ? { width: 0 } : {}}

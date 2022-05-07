@@ -37,7 +37,6 @@ const EpisodesShow = (props) => {
       return;
     }
     props.fetchEpisode(id);
-    // console.log("[PROPS]", props);
     setInitVals(props.episode);
   }, [props.episode.title]);
 
@@ -75,7 +74,6 @@ const EpisodesShow = (props) => {
     if (!initVals) {
       return;
     }
-    // console.log(data);
     const values = {
       "episode-title": initVals.title,
       "episode-type": initVals.type,
@@ -86,8 +84,6 @@ const EpisodesShow = (props) => {
       "episode-videoLink": initVals.videoLink,
       "episode-releaseDate": initVals.releaseDate,
     };
-
-    // console.log(values)
 
     setForm(values);
   };

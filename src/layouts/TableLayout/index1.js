@@ -5,8 +5,6 @@ const TableLayout = (props) => {
   const rowSelection = {
     onChange: (e) => {
       //selectedRowKeys, selectedRows) => {
-      // console.log(e)
-      // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
     getCheckboxProps: (record) => ({
       disabled: record.name === "Disabled User",

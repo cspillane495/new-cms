@@ -3,7 +3,6 @@ import { Redirect, Route } from "react-router";
 import DashboardLayout from "./DashboardLayout";
 
 const MainIndex = ({ component: Component, currentUser, ...rest }) => {
-  console.log(rest);
   delete rest.children;
   return (
     <Route

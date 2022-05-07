@@ -10,13 +10,17 @@ import Header from "../../components/Header";
 import routes from "../../config/routes.config";
 import { renderNavItems } from "../../utils/route.utils";
 import ContentWrapper from "./ContentWrapper";
+import { useHistory } from "react-router-dom";
 // import SettingsSidebar from "../../components/SettingsSidebar";
 const navItems = renderNavItems(routes);
 
 const DashboardLayout = (props) => {
+  const history = useHistory();
+  const activePath = history.location.pathname;
+
   const layout = (
     <Root>
-      <Sidebar navItems={navItems} />
+      <Sidebar navItems={navItems} activePath={activePath} />
       <ContentWrapper>{props.children}</ContentWrapper>
       {/* <NavWrapper navItems={navItems}>
         <div style={{ display: "flex", flexDirection: "column" }}>

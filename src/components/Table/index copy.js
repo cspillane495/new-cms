@@ -17,7 +17,6 @@ const Table = (props) => {
   }
 
   function selectSingleTableItem(e) {
-    // console.log(e)
     const obj = { id: e.target.id, value: e.target };
     updateForm(obj);
   }

@@ -4,10 +4,13 @@ import { LayoutContext } from "../../layouts/Root";
 import SidebarItem from "./SidebarItem";
 import "./style.scss";
 import SidebarHeader from "./SidebarHeader";
-import { cs } from "date-fns/locale";
+import { renderActivePath } from "./sidebar.utils";
 
 const Sidebar = (props) => {
   const cx = useContext(LayoutContext);
+  const activePath = renderActivePath(props.path, props.activePath);
+  // const navOpen = activePath.parent === props.activePath ? true : cx.navOpen;
+
   const durationSidebar = {
     enter: 100,
     exit: 300,
@@ -28,7 +31,12 @@ const Sidebar = (props) => {
         <SidebarHeader />
         <div className="sidebar-content">
           {props.navItems.map((item, key) => (
-            <SidebarItem navOpen={cx.navOpen} {...item} key={key} />
+            <SidebarItem
+              item={item}
+              activePath={activePath}
+              navOpen={cx.navOpen}
+              key={key}
+            />
           ))}
         </div>
       </>

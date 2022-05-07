@@ -6,7 +6,6 @@ import RightContent from "./RightContent";
 import { Button, Text } from "../../components";
 import { ArrowRightSquare, ArrowLeftSquare } from "react-bootstrap-icons";
 import "./style.scss";
-// console.log(Button);
 
 const Header = (props) => {
   const ctx = useContext(LayoutContext);

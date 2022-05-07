@@ -35,7 +35,6 @@ const EpisodesShow = ({
       return;
     }
     fetchEpisode(id);
-    // console.log("[PROPS]", props);
     setInitVals(episode);
   }, [episode._id, match]);
 

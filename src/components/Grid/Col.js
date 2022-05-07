@@ -12,8 +12,6 @@ const Col = (props) => {
     return filteredPropKeys.length < 1;
   };
 
-  // console.log("[COL CHECK PROPS]", checkProps());
-
   const classes = classnames(
     { col: checkProps() },
     { [`col-sm-${props.sm}`]: props.sm },

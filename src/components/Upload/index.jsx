@@ -20,14 +20,11 @@ const Upload = (props) => {
   function setFile() {
     const selectedFiles = inputFile.current.files;
     if (!selectedFiles) return;
-    // console.log(Object.keys(selectedFiles))
 
     let newObj = {};
     Object.keys(selectedFiles).map((key, i) => {
-      // console.log(typeof key)
       newObj[selectedFiles[key].name] = selectedFiles[key];
     });
-    // console.log(newObj)
     setFiles({ ...files, ...newObj });
   }
 
@@ -41,7 +38,6 @@ const Upload = (props) => {
   }
 
   function showModal(e) {
-    // console.log('[SHOW MODAL]', e.target)
     setModalContent({ img: e.target.src });
     setModalState(!modalState);
   }
@@ -57,7 +53,6 @@ const Upload = (props) => {
 
   function renderUploadedFiles(fileMap) {
     let arr = Object.keys(fileMap);
-    // console.log(fileMap)
     return arr.map((itemKey, i) => {
       return (
         <MediaCard

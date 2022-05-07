@@ -11,7 +11,6 @@ const LoginForm = (props) => {
   };
 
   const submitLogin = () => {
-    // console.log("[Submit Lgin Form]",form)
     const user = { email: form.loginEmail, password: form.loginPassword };
 
     props.userLogin(user, props.history);

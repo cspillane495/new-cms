@@ -39,8 +39,6 @@ const Media = (props) => {
     props.fetchMediaItems();
   }, []);
 
-  // console.log(props);
-
   return (
     <div className="container">
       <div>

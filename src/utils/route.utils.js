@@ -14,7 +14,9 @@ export const renderNavItems = (arr, child, parent) => {
         path: item.path,
         title: item.title,
         icon: item.icon,
-        children: renderNavItems(item.children),
+        children: renderNavItems(
+          getChildWithParentPath(item.children, item.path)
+        ),
       };
     }
     return {

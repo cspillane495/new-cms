@@ -15,7 +15,6 @@ const ContentWrapper = (props) => {
     "main-content",
     `content-background-${ctx.theme}`
   );
-  // console.log(ctx);
   const transition = 350;
   const contentStyle = {
     transition: `padding ${transition}ms`,

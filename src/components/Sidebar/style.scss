@@ -1,3 +1,5 @@
+$icon-background: grey;
+
 .sidebar {
   height: 100vh;
   top: 0;
@@ -17,11 +19,19 @@
 
 .sidebar-item {
   cursor: pointer;
-  height: 50px;
+  height: 45px;
   transition: all 0.2s ease-in-out 0s;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+
+  &:hover {
+    background-color: #efefef;
+  }
+}
+
+.sidebar-item-active {
+  background-color: #efefef;
 }
 
 .sidebar-icon {
@@ -35,4 +45,39 @@
   cursor: pointer;
   height: 100%;
   width: 100%;
+}
+
+.sidebar-item-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-item-link-child {
+  padding: 1em 4em 1em 0em;
+  cursor: pointer;
+}
+
+.sidebar-item-child-toggle {
+  padding: 14px;
+  border-radius: 30px;
+  -webkit-transition: background-color 300ms linear, color 300ms linear;
+  transition: background-color 300ms linear, color 300ms linear;
+  &:hover {
+    background-color: #e2e1e1;
+  }
+}
+
+.sidebar-child-menu-item {
+  padding-left: 10px;
+  // -webkit-transition: background-color 300ms linear, color 300ms linear;
+  // transition: background-color 300ms linear, color 300ms linear;
+  // &:hover {
+  //   background-color: #efefef;
+  // }
+}
+
+.sidebar-child-menu-item-no-icon {
+  padding-left: 69px;
 }

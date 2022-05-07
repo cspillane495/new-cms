@@ -2,7 +2,6 @@ import Radio from "../Radio";
 import EditableItem from "./EditableItem";
 
 const TableRows = ({ list, headers, ...props }) => {
-  // console.log('[TABLE ROW PROPS]', headers)
   if (list.length === 0)
     return (
       <tr>
@@ -25,7 +24,6 @@ const TableRows = ({ list, headers, ...props }) => {
                     } */}
         </th>
         {headers.map((headerItem, i) => {
-          // console.log('[HEADER LIST MAP]',headerItem, rowItem);
           const renderData = headerItem.render
             ? headerItem.render(
                 {

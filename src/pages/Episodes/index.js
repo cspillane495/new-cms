@@ -42,7 +42,7 @@ const Episodes = (props) => {
     {
       title: "Active",
       dataIndex: "active",
-      render: ({ active, id }) => id, //console.log(id)//(
+      render: ({ active, id }) => id, //(
       //     <ToggleSwitch
       //         toggled={form['episode-toggled'] + '-' + id}
       //         onToggle={(cb) => cb(false)}

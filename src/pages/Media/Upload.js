@@ -5,7 +5,6 @@ import { Container } from "../../components/Grid";
 import Upload from "../../components/Upload";
 
 const UploadMedia = (props) => {
-  // console.log('MEDIA', props)
   const [media, setMedia] = useState({});
   useEffect(() => {
     props.fetchMediaItems();
@@ -13,11 +12,9 @@ const UploadMedia = (props) => {
 
   function renderMediaItems(media) {
     return media.map((item, i) => {
-      // console.log('[RENDER MEDIA ITEMS]', item)
       return <li key={i}>{item.name}</li>;
     });
   }
-  // console.log(props)
 
   return (
     <div>

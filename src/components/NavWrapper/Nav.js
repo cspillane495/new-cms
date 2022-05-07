@@ -13,8 +13,6 @@ const Nav = (props) => {
     marginBlockStart: 15,
   };
 
-  // console.log(props);
-
   function renderNavItems(arr) {
     const items = arr;
 
