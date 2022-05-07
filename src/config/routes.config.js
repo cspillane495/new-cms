@@ -73,7 +73,7 @@ const routes = [
     path: "/users",
     component: Users,
     layout: "dashboard",
-    icon: Person,
+    // icon: Person,
   },
   {
     title: "Login",
