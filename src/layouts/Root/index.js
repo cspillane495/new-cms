@@ -22,8 +22,10 @@ export const LayoutContext = React.createContext({
 const Root = ({ children }) => {
   const { size, isMobile, breakpoint } = useWindowSize();
   const navBreakpoint = "sm";
-
-  const navStartsOpen = size.width > bootrapBreakpoints[navBreakpoint];
+  const navStatus = localStorage.getItem("navOpen");
+  const navStartsOpen = navStatus
+    ? navStatus
+    : size.width > bootrapBreakpoints[navBreakpoint];
 
   const [navAnimate, setNavAnimate] = useState(false);
   const [navOpen, setNavOpen] = useState(navStartsOpen);
@@ -57,8 +59,8 @@ const Root = ({ children }) => {
       <Media
         query={{ minWidth: bootrapBreakpoints.sm }}
         onChange={(isLarge) => {
-          setNavDocked(isLarge);
-          setNavOpen(isLarge);
+          // setNavDocked(isLarge);
+          // setNavOpen(isLarge);
         }}
       />
       <div style={style.root}>{children}</div>

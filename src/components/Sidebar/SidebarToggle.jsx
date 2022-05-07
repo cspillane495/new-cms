@@ -55,6 +55,11 @@ const SidebarHeader = (props) => {
     exited: { opacity: 0, width: "0%", display: "none" },
   };
 
+  function toggleNav() {
+    cx.setNavOpen(!cx.navOpen);
+    localStorage.setItem("navOpen", !cx.navOpen);
+  }
+
   return (
     <div className="sidebar-toggle">
       <Transition in={cx.navOpen} timeout={duration}>
@@ -65,7 +70,7 @@ const SidebarHeader = (props) => {
               ...xTransitionStyles[state],
             }}
           >
-            <Circle onClick={() => cx.setNavOpen(!cx.navOpen)} size={25} />{" "}
+            <Circle onClick={toggleNav} size={25} />{" "}
           </div>
         )}
       </Transition>
@@ -77,7 +82,7 @@ const SidebarHeader = (props) => {
               ...iconTransitionStyles[state],
             }}
           >
-            <X onClick={() => cx.setNavOpen(!cx.navOpen)} size={35} />
+            <X onClick={toggleNav} size={35} />
           </div>
         )}
       </Transition>
