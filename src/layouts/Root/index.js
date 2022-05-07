@@ -22,13 +22,14 @@ export const LayoutContext = React.createContext({
 const Root = ({ children }) => {
   const { size, isMobile, breakpoint } = useWindowSize();
   const navBreakpoint = "sm";
-  const navStatus = localStorage.getItem("navOpen");
-  const navStartsOpen = navStatus
-    ? navStatus
-    : size.width > bootrapBreakpoints[navBreakpoint];
+  const navStatus = localStorage.getItem("navOpen") === "true";
+  // ? navStatus
+  // : size.width > bootrapBreakpoints[navBreakpoint];
+
+  console.log(navStatus);
 
   const [navAnimate, setNavAnimate] = useState(false);
-  const [navOpen, setNavOpen] = useState(navStartsOpen);
+  const [navOpen, setNavOpen] = useState(navStatus);
   const [navDocked, setNavDocked] = useState(true);
 
   useEffect(() => {

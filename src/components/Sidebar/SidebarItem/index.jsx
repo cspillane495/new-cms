@@ -18,8 +18,12 @@ const SidebarItem = ({ ...props }) => {
     : false;
   const [openNavItem, setOpenNavItem] = useState(navOpenInit);
 
+  console.log({ checkChildren, activePath: props.activePath });
+
   const classes = classNames("sidebar-item", {
-    "sidebar-item-active": props.activePath.path === item?.path,
+    "sidebar-item-active":
+      props.activePath.path === item?.path ||
+      (!props.navOpen && props.activePath.parent === item.path),
     "sidebar-child-menu-item": props.child && item.icon,
     "sidebar-child-menu-item-no-icon": props.child && !item.icon,
   });
@@ -77,7 +81,7 @@ const SidebarItem = ({ ...props }) => {
           duration={duration}
           history={history}
           openChildMenu={setOpenNavItem}
-          childMenuOpen={openNavItem} // || navOpen}
+          childMenuOpen={props.navOpen && openNavItem} // || navOpen}
           navOpen={props.navOpen}
           path={item.path}
           children={childMenu}
