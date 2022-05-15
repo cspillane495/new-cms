@@ -2,7 +2,7 @@ import classnames from "classnames";
 import React, { useContext } from "react";
 import Container from "../../components/Grid/Container";
 import { LayoutContext } from "../Root";
-import Header from "../../components/Header";
+import Header from "./Header";
 import { Transition } from "react-transition-group";
 
 const ContentWrapper = (props) => {
