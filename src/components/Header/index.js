@@ -14,8 +14,8 @@ const Header = (props) => {
   return (
     <div className="header-wrapper">
       <div></div>
-      <div className="right-content">
-        <RightContent />
+      <div className="header-right-content">
+        <RightContent>{props.rightContent}</RightContent>
       </div>
     </div>
   );
