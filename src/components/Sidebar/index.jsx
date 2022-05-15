@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Transition } from "react-transition-group";
 import { LayoutContext } from "../../layouts/Root";
 import SidebarItem from "./SidebarItem";
@@ -8,7 +8,8 @@ import { renderActivePath } from "./sidebar.utils";
 
 const Sidebar = (props) => {
   const cx = useContext(LayoutContext);
-  const activePath = renderActivePath(props.path, props.activePath);
+  const activePath =
+    !props.activePath && renderActivePath(props.path, props.activePath);
   // const navOpen = activePath.parent === props.activePath ? true : cx.navOpen;
 
   const durationSidebar = {
