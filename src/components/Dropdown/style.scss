@@ -1,0 +1,33 @@
+.dropdown-wrapper {
+  z-index: 1000;
+  padding: 10px;
+}
+
+.dropdown-menu {
+  overflow: auto;
+  min-width: 8em;
+  padding: 0px;
+  margin: 0 !important;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 3px;
+
+  li {
+    padding: 0.4em 0.5em; // 2em;
+    background-color: #ffffff;
+    line-height: 1;
+    cursor: pointer;
+    &:hover {
+      background-color: grey;
+    }
+  }
+  li a {
+    padding: 5px 0;
+    text-decoration: none;
+  }
+}
+
+.drop-align-right {
+  right: 1.7em;
+}
