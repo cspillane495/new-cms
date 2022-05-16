@@ -12,7 +12,11 @@
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 3px;
+}
 
+.dropdown-list {
+  padding: 0px;
+  margin: 0 !important;
   li {
     padding: 0.4em 0.5em; // 2em;
     background-color: #ffffff;
@@ -30,4 +34,6 @@
 
 .drop-align-right {
   right: 1.7em;
+  display: flex;
+  justify-content: flex-end;
 }

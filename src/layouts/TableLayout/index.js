@@ -1,11 +1,10 @@
-import { Container, Row, Col } from "../../components/Grid";
-import Table from "../../components/Table";
+import { Table as T, Button } from "../../components";
 import { Link } from "react-router-dom";
-import Button from "../../components/Button";
 import { ChevronLeft } from "react-bootstrap-icons";
 import React, { useMemo, useState, useEffect } from "react";
-import axios from "axios";
 // import "./index.css";
+
+const { Table } = T;
 
 const Genres = ({ values }) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FormItem, Form } from "../../../components/Form";
+import { FormItem, Form } from "../../../components";
 import { Row, Container, Col } from "../../../components/Grid";
 import Input from "../../../components/Input";
 import Select from "../../../components/Select";
@@ -93,7 +93,7 @@ const EpisodesShow = ({
   return (
     <div>
       <h3>Episodes Show</h3>
-      <Form>
+      {/* <Form>
         <div>
           <Col sm={12}>
             <FormItem>
@@ -182,11 +182,11 @@ const EpisodesShow = ({
               />
             </FormItem>
           </Col>
-          {/* <EpisodeMedia 
+          <EpisodeMedia 
                             items={props.mediaItems}
                             form={form}
                             changeInput={changeInput}
-                        /> */}
+                        />
           <Button
             form={form}
             changeInput={changeInput}
@@ -195,7 +195,7 @@ const EpisodesShow = ({
             title="Submit Form"
           />
         </div>
-      </Form>
+      </Form> */}
     </div>
   );
 };

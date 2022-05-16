@@ -26,8 +26,6 @@ const Root = ({ children }) => {
   // ? navStatus
   // : size.width > bootrapBreakpoints[navBreakpoint];
 
-  console.log(navStatus);
-
   const [navAnimate, setNavAnimate] = useState(false);
   const [navOpen, setNavOpen] = useState(navStatus);
   const [navDocked, setNavDocked] = useState(true);

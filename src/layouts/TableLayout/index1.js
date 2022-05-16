@@ -1,5 +1,4 @@
-import { Container, Row, Col } from "../../components/Grid";
-import Table from "../../components/Table";
+import { Table } from "../../components";
 
 const TableLayout = (props) => {
   const rowSelection = {

@@ -1,4 +1,4 @@
-export const TableImg = (props) => {
+const TableImg = (props) => {
   const noData = "No image data";
 
   switch (props.type) {
@@ -15,3 +15,5 @@ export const TableImg = (props) => {
       );
   }
 };
+
+export default TableImg;

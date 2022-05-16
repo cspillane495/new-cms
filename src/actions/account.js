@@ -8,7 +8,11 @@ const ROOT_URL = "http://localhost:8080/api/v1";
 export const fetchCurrentUser = () => async (dispatch) => {
   dispatch({ type: FETCH_LOADING, payload: true });
   const res = await request(`/users/current`);
-  dispatch({ type: FETCH_CURRENT_USER, payload: res.data.user });
+
+  dispatch({
+    type: FETCH_CURRENT_USER,
+    payload: res.data.user,
+  });
   dispatch({ type: FETCH_LOADING, payload: false });
 };
 

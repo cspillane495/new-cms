@@ -3,8 +3,6 @@ export function renderActivePath(path, activePath, child) {
   //   return activePath;
   // }
 
-  console.log(path, activePath);
-
   const newActive = activePath.split("/");
 
   const final = {

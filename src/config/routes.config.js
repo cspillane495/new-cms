@@ -3,7 +3,8 @@ import Episodes from "../pages/Episodes";
 import EpisodesShow from "../pages/Episodes/Show";
 // import Blog from "../pages/Blog";
 import Login from "../pages/Login";
-// import Account from "../pages/Account";
+import Account from "../pages/Account";
+import AccountSettings from "../pages/Account/Settings";
 // import ForgotPassword from "../pages/Account/ForgotPassword";
 import Media from "../pages/Media";
 import UploadMedia from "../components/Upload";
@@ -14,7 +15,7 @@ import {
   Collection,
   Film,
   Upload,
-  Person,
+  People,
 } from "react-bootstrap-icons";
 
 const routes = [
@@ -73,7 +74,7 @@ const routes = [
     path: "/users",
     component: Users,
     layout: "dashboard",
-    // icon: Person,
+    icon: People,
   },
   {
     title: "Login",
@@ -82,6 +83,24 @@ const routes = [
     component: Login,
     layout: "login",
     removeFromMenu: true,
+  },
+  {
+    title: "Account",
+    path: "/account",
+    exact: true,
+    component: <Account />,
+    layout: "dashboard",
+    removeFromMenu: true,
+    children: [
+      {
+        title: "Account Settings",
+        path: "/settings",
+        exact: true,
+        component: AccountSettings,
+        layout: "dashboard",
+        removeFromMenu: true,
+      },
+    ],
   },
 ];
 

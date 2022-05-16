@@ -1,7 +1,4 @@
-import { PlusCircle } from "react-bootstrap-icons";
-import { useEffect, useState } from "react";
-import { FormItem } from "../../../components/Form";
-import Select from "../../../components/Select";
+import { Select } from "../../../components";
 
 const EpisodeMedia = (props) => {
   const updateForm = (input) => {};

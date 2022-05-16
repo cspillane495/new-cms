@@ -57,6 +57,7 @@ const SearchInput = (props) => {
       <Transition in={open} timeout={duration}>
         {(state) => (
           <Input
+            onChange={props.onChange || (() => null)}
             style={{
               ...style,
               ...transitionStyles[state],

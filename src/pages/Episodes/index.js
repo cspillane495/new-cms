@@ -1,11 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Row, Container, Col } from "../../components/Grid";
 import TableLayout from "../../layouts/TableLayout";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEpisodes, updateEpisode } from "../../actions/episodes";
 import useForm from "../../hooks/formHook";
-import ToggleSwitch from "../../components/ToggleSwitch";
 import { TABLE_COLUMNS } from "./table.config";
 
 const Episodes = (props) => {
@@ -55,13 +53,13 @@ const Episodes = (props) => {
     <div>
       <div>
         <div>
-          <TableLayout
+          {/* <TableLayout
             back="/"
             data={list}
             columns={columns}
             path="/episodes/create"
             title="Episodes"
-          />
+          /> */}
         </div>
       </div>
     </div>

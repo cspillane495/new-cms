@@ -1,6 +1,6 @@
 import { capitalizeFirstLetter } from "../../utils";
 
-function renderHeader(e) {
+export function renderHeader(e) {
   return (
     <div className="table-column-header">{capitalizeFirstLetter(e.value)}</div>
   );

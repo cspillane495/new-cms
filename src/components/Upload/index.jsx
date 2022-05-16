@@ -23,7 +23,7 @@ const Upload = (props) => {
 
     let newObj = {};
     Object.keys(selectedFiles).map((key, i) => {
-      newObj[selectedFiles[key].name] = selectedFiles[key];
+      return (newObj[selectedFiles[key].name] = selectedFiles[key]);
     });
     setFiles({ ...files, ...newObj });
   }

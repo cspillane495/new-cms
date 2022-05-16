@@ -1,0 +1,13 @@
+.tabs-wrapper {
+  .tabs {
+    display: flex;
+    flex-direction: row;
+
+    .tab-item {
+      padding: 2px;
+    }
+    .tab-active {
+      background: grey;
+    }
+  }
+}

@@ -1,15 +1,15 @@
 import classNames from "classnames";
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import useHover from "../../hooks/usehover";
+import useHover from "../../hooks/useHover";
 import "./style.scss";
 
 const Dropdown = (props) => {
   const history = useHistory();
   const wrapperRef = useRef(null);
   const { visible } = useHover(wrapperRef);
-
-  const classesMenu = classNames("dropdown-menu", {
+  const dropClasses = classNames("dropdown-menu");
+  const dropWrapperClasses = classNames({
     "drop-align-right": props.alignRight,
   });
 
@@ -17,23 +17,33 @@ const Dropdown = (props) => {
     history.push(item.path);
   }
 
+  function renderData(data) {
+    if (!visible) return;
+    return (
+      <div className={dropWrapperClasses}>
+        <div className={dropClasses}>
+          {Array.isArray(data) ? (
+            <ul className="dropdown-list">
+              {data.map((item, i) => {
+                return (
+                  <li key={i} onClick={() => handleNavigate(item)}>
+                    {item.title}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            data
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div ref={wrapperRef} className="dropdown-wrapper">
-      <div className="dropdown-trigger">{props.trigger}</div>
-      {
-        // true && (
-        visible && (
-          <ul className={classesMenu}>
-            {props.items.map((item, i) => {
-              return (
-                <li key={i} onClick={() => handleNavigate(item)}>
-                  {item.title}
-                </li>
-              );
-            })}
-          </ul>
-        )
-      }
+      {props.trigger}
+      {renderData(props.data)}
     </div>
   );
 };

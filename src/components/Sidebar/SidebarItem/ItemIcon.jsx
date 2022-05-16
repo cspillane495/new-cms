@@ -26,7 +26,6 @@ const ItemIcon = (props) => {
   }
 
   function handleClick(e) {
-    console.log("HIT", props);
     props.history.push(props.path);
   }
 
