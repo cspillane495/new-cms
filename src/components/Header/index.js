@@ -6,13 +6,16 @@ import RightContent from "./RightContent";
 import { Button, Text } from "../../components";
 import { ArrowRightSquare, ArrowLeftSquare } from "react-bootstrap-icons";
 import "./style.scss";
+import classNames from "classnames";
 
 const Header = (props) => {
   const ctx = useContext(LayoutContext);
-  const { navOpen, setNavOpen, navDocked, navAnimate } = ctx;
+  const { navOpen, setNavOpen, navDocked, navAnimate, theme } = ctx;
+
+  const classes = classNames("header-wrapper", `header-color-${theme}`);
 
   return (
-    <div className="header-wrapper">
+    <div className={classes}>
       <div></div>
       <div className="header-right-content">
         <RightContent>{props.rightContent}</RightContent>

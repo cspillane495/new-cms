@@ -10,15 +10,17 @@ const Tabs = (props) => {
   const [activeContent, setActiveContent] = useState(
     props.activeContent || props.data[0].content
   );
-  const classes = classNames("tab-item");
 
   function renderTabs(data) {
     return data.map((item, i) => {
       const isActive = activeTab === item.id;
+      const classes = classNames("tab-item", {
+        "tab-active": isActive,
+      });
 
       return (
         <div
-          className={`tab-item ${isActive && "tab-active"}`}
+          className={classes}
           onClick={() => {
             setActiveTab(item.id);
             setActiveContent(item.content);

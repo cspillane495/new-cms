@@ -1,16 +1,24 @@
 .dropdown-wrapper {
   z-index: 1000;
-  padding: 10px;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .dropdown-menu {
   overflow: auto;
   min-width: 8em;
   padding: 0px;
-  margin: 0 !important;
   position: absolute;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: #ffffff;
+  border: 1px solid #9a9a9a;
   border-radius: 3px;
 }
 
@@ -23,7 +31,7 @@
     line-height: 1;
     cursor: pointer;
     &:hover {
-      background-color: grey;
+      background-color: #f3f3f3;
     }
   }
   li a {

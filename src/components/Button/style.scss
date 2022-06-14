@@ -1,12 +1,9 @@
 .btn {
-  padding: 0.6em;
+  padding: 0.5em;
   border: 1px solid #ffffff38;
   border-radius: 2px;
   font-size: 0.9em;
-}
-
-.btn-primary {
-  background-color: #00dac6;
+  cursor: pointer;
 }
 
 .btn-disabled {

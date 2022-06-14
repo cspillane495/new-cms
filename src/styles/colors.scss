@@ -1,0 +1,99 @@
+// CONTENT COLORS
+//
+$background-light: #f7f7f7;
+$background-dark: #1e1f25;
+$secondary-background-dark: #17181c;
+
+$background-active: #272c38;
+
+$primary-color: #1ebe88;
+$secondary-color: #f9515f;
+$secondary-color-2: #d6d9da;
+
+$text-color: #95969a;
+$text-color-active: #4a545d;
+
+$secondary-text-color: #d6d9da;
+
+$icon-color-dark: #4a545d;
+
+$border-color-dark: #4a545d;
+
+$header-color-light: #102b43;
+
+$header-item-color-light: #f3f3f3;
+$header-item-color-dark: #dedede;
+
+// CONTENT
+//
+.content-background-light {
+  background-color: $background-light;
+}
+.content-background-dark {
+  background-color: $background-dark;
+}
+
+// HEADER
+//
+.header-color-light {
+  background-color: $header-color-light;
+}
+.header-color-dark {
+  background-color: $background-dark;
+  border-bottom: 1px solid $border-color-dark;
+}
+.username-color-light {
+  color: $header-item-color-light;
+}
+.username-color-dark {
+  color: $header-item-color-dark;
+}
+
+// BUTTON COLORS
+//
+.btn-primary {
+  background-color: $primary-color;
+  color: #ffffff;
+}
+.btn-primary:focus-visible {
+  outline: none;
+  border-color: $primary-color;
+}
+
+//TEXT COLORS
+//
+.text-light {
+  color: #000000;
+}
+.text-dark {
+  color: #ffffff;
+}
+
+//ICON COLORS
+//
+.icon-color-light {
+  svg {
+    fill: $header-item-color-light;
+  }
+}
+.icon-color-dark {
+  svg {
+    fill: $header-item-color-dark;
+  }
+}
+
+//CARD COLORS
+//
+.card-light {
+  background-color: #ffffff;
+}
+.card-dark {
+  background-color: #000000;
+}
+
+.card-header-light {
+  background-color: #f7f7f7;
+}
+.card-header-dark {
+  background-color: #272727;
+}

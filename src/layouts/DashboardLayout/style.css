@@ -1,6 +1,0 @@
-.content-wrapper {
-  width: -webkit-fill-available;
-  display: flex;
-  flex-flow: column nowrap;
-  flex-grow: 1;
-}

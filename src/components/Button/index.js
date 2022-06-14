@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import "./style.css";
+import "./style.scss";
 
 const Button = (props) => {
   const classes = classnames(
@@ -12,16 +12,9 @@ const Button = (props) => {
 
   return (
     <button className={classes} onClick={props.onClick} type={props.type}>
-      {setTitle(props)}
+      {props.title || props.children}
     </button>
   );
 };
-
-function setTitle({ title, children }) {
-  if (!title) {
-    return children;
-  }
-  return title;
-}
 
 export default Button;

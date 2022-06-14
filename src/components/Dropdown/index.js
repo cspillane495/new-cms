@@ -21,7 +21,13 @@ const Dropdown = (props) => {
     if (!visible) return;
     return (
       <div className={dropWrapperClasses}>
-        <div className={dropClasses}>
+        <div
+          className={dropClasses}
+          style={{
+            marginTop: props.dropMarginTop,
+            marginRight: props.dropMarginRight,
+          }}
+        >
           {Array.isArray(data) ? (
             <ul className="dropdown-list">
               {data.map((item, i) => {

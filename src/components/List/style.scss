@@ -1,0 +1,15 @@
+.list-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  transition: all 300ms;
+  -webkit-transition: background-color 300ms linear, color 300ms linear;
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+}

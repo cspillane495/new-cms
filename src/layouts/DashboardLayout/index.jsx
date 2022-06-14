@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Sidebar } from "../../components";
+import { SettingsSidebar, Sidebar } from "../../components";
 import { logout } from "../../actions/account";
 import Root from "../Root";
 import routes from "../../config/routes.config";
 import { renderNavItems } from "../../utils/route.utils";
 import ContentWrapper from "./ContentWrapper";
 import { useHistory } from "react-router-dom";
-import "./style.css";
+import "./style.scss";
 
 const navItems = renderNavItems(routes);
 
@@ -18,14 +18,17 @@ const DashboardLayout = (props) => {
   const layout = (
     <Root>
       <Sidebar navItems={navItems} activePath={activePath} />
-      <ContentWrapper>{props.children}</ContentWrapper>
+      <ContentWrapper history={history} currentUser={props.currentUser}>
+        {props.children}
+      </ContentWrapper>
+      {/* <SettingsSidebar navItems={navItems} activePath={activePath} /> */}
     </Root>
   );
   return layout;
 };
 
-function mapStatetoProps() {
-  return {};
+function mapStatetoProps({ currentUser }) {
+  return { currentUser };
 }
 
 export default connect(mapStatetoProps, { logout })(DashboardLayout);
