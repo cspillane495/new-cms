@@ -9,6 +9,7 @@ import AccountSettings from "../pages/Account/Settings";
 import Media from "../pages/Media";
 import UploadMedia from "../components/Upload";
 import Users from "../pages/Users";
+import Help from "../pages/Help";
 
 import {
   Bullseye,
@@ -85,10 +86,18 @@ const routes = [
     removeFromMenu: true,
   },
   {
+    title: "Help",
+    path: "/help",
+    exact: true,
+    component: Help,
+    layout: "dashboard",
+    removeFromMenu: true,
+  },
+  {
     title: "Account",
     path: "/account",
     exact: true,
-    component: <Account />,
+    component: Account,
     layout: "dashboard",
     removeFromMenu: true,
     children: [

@@ -26,6 +26,7 @@
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
     "sass": "^1.50.0",
+    "timeago-react": "^3.0.4",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

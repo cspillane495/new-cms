@@ -3,6 +3,8 @@ import { Search, X } from "react-bootstrap-icons";
 import { SwitchTransition } from "react-transition-group";
 import { Transition } from "react-transition-group";
 import { Input } from "../";
+import useFocus from "../../hooks/useFocus";
+import Icon from "../Icon";
 
 const FadeDiv = ({ state, children }) => {
   const style = {
@@ -20,7 +22,9 @@ const FadeTransition = ({ children, ...rest }) => (
 );
 
 const SearchInput = (props) => {
+  const focus = useFocus();
   const [open, setOpen] = useState(false);
+  const opened = props.open || open;
   const mode = "out-in";
 
   const duration = {
@@ -41,24 +45,43 @@ const SearchInput = (props) => {
     <div style={{ display: "flex", alignItems: "center" }}>
       <SwitchTransition mode="out-in">
         <FadeTransition
-          key={open ? "x" : "search"}
+          key={opened ? "x" : "search"}
           timeout={75}
           unmountOnExit
           mountOnEnter
         >
           {open ? (
-            <X onClick={() => setOpen(!open)} size={25} />
+            <Icon name="X" onClick={() => setOpen(!open)} size={25} />
           ) : (
-            <Search onClick={() => setOpen(!open)} />
+            <Icon
+              name="Search"
+              onClick={() => {
+                setOpen(!open);
+                // setInputFocus();
+              }}
+            />
           )}
         </FadeTransition>
       </SwitchTransition>
 
-      <Transition in={open} timeout={duration}>
+      <Transition
+        in={opened}
+        timeout={duration}
+        onExited={(e) => {
+          setTimeout(() => {
+            e.style.display = "none";
+          }, 200);
+        }}
+        onEntering={(e) => {
+          e.style.display = "block";
+        }}
+      >
         {(state) => (
           <Input
+            ref={focus[0]}
             onChange={props.onChange || (() => null)}
             style={{
+              display: "none",
               ...style,
               ...transitionStyles[state],
             }}

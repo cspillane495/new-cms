@@ -62,6 +62,7 @@ function useWindowSize() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     window.addEventListener("resize", handleBreakpoint);
+    handleBreakpoint();
     handleResize();
     return () => {
       window.removeEventListener("resize", handleResize);

@@ -19,3 +19,11 @@ export function valueIsEmpty(value) {
 export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function isObject(obj) {
+  return typeof obj === "object" && !Array.isArray(obj) && obj !== null;
+}
+
+export function isNum(num) {
+  return !isNaN(num);
+}

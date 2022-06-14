@@ -31,7 +31,7 @@ const ContentWrapper = (props) => {
 
   return (
     <div className={wrapperClasses}>
-      <Header />
+      <Header {...props} />
       <div className={mainContentClasses}>
         <Transition in={ctx.navOpen} timeout={duration}>
           {(state) => (

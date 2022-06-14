@@ -7,8 +7,8 @@ const options = [
   { title: "Drop 3", path: "#" },
 ];
 
-const Account = (props) => {
+const Help = (props) => {
   return <div>{/* <Dropdown data={options} /> */}</div>;
 };
 
-export default Account;
+export default Help;

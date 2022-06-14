@@ -28,10 +28,10 @@ const TableLayout = (props) => {
           <ChevronLeft />
         </Link>
         <h2>{props.title}</h2>
+        <Link to={props.path}>
+          <Button>Add New</Button>
+        </Link>
       </div>
-      <Link to={props.path}>
-        <Button>Add New</Button>
-      </Link>
       <div>
         <div col={12}>
           <Table columns={props.columns} data={props.data} {...props} />

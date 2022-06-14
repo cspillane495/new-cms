@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useTable, useFilters, useSortBy } from "react-table";
 import "./style.css";
+import TableHeader from "./TableHeader";
+import TableBody from "./TableBody";
+
 export default function Table({ columns, data }) {
   const [filterInput, setFilterInput] = useState("");
   // Use the state and functions returned from useTable to build your UI
@@ -11,14 +14,7 @@ export default function Table({ columns, data }) {
     rows,
     prepareRow,
     setFilter,
-  } = useTable(
-    {
-      columns,
-      data,
-    },
-    useFilters,
-    useSortBy
-  );
+  } = useTable({ columns, data }, useFilters, useSortBy);
 
   const handleFilterChange = (e) => {
     const value = e.target.value || undefined;
@@ -35,40 +31,12 @@ export default function Table({ columns, data }) {
         placeholder={"Search name"}
       />
       <table style={{ width: "100%" }} {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className={
-                    column.isSorted
-                      ? column.isSortedDesc
-                        ? "sort-desc"
-                        : "sort-asc"
-                      : ""
-                  }
-                >
-                  {column.render("Header")}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
+        <TableHeader headerGroups={headerGroups} />
+        <TableBody
+          bodyProps={getTableBodyProps}
+          rows={rows}
+          prepareRow={prepareRow}
+        />
       </table>
     </>
   );

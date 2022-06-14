@@ -1,12 +1,13 @@
 export { default as Avatar } from "./Avatar";
 export { default as Button } from "./Button";
 export { default as Card } from "./Card";
-// export { default as Form } from "./Form";
+export { default as Dropdown } from "./Dropdown";
 export * as Form from "./Form";
 export { default as Grid } from "./Grid";
 export { default as Header } from "./Header";
-export { default as Dropdown } from "./Dropdown";
+export { default as Icon } from "./Icon";
 export { default as Input } from "./Input";
+export { default as List } from "./List";
 export { default as LoginForm } from "./LoginForm";
 export { default as Modal } from "./Modal";
 export { default as Navbar } from "./Navbar";
